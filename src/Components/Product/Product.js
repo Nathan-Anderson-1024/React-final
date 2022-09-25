@@ -1,5 +1,7 @@
 import React from 'react'
 import './Product.css'
+import {BrowserRouter as Router} from 'react-router-dom'
+
 export default function Product(props) {
 //   const product = props.products.map((product) => {
 //     return <p key={product.id}>{product.title}</p>
@@ -17,7 +19,6 @@ export default function Product(props) {
                 </div>
             )
         })}
-        
     </div>
     
   )
