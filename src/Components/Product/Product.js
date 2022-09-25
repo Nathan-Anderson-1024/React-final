@@ -1,6 +1,6 @@
 import React from 'react'
 import './Product.css'
-import {BrowserRouter as Router} from 'react-router-dom'
+//import {BrowserRouter as Router} from 'react-router-dom'
 
 export default function Product(props) {
 //   const product = props.products.map((product) => {

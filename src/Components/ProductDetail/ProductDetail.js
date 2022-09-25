@@ -6,7 +6,7 @@ export default function ProductDetail() {
     <>
         <div className='individual-product-container'>
             <div className='img-left'>
-                <img>IMAGE</img>
+                <img alt='product description'>IMAGE</img>
             </div>
             <div className='product-info-right'>
                 <h4>CATEGORY</h4>
