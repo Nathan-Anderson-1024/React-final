@@ -31,7 +31,7 @@ body {
     align-items: center;
     padding: 0.25rem;
 }
-.navbar li.active {
+.navbar li .active {
     background-color: #555;
 }
 .navbar li:hover {
