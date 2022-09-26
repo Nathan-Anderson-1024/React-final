@@ -1,6 +1,6 @@
 import React from 'react'
 import './Product.css'
-import {BrowserRouter as Router, useParams} from 'react-router-dom'
+
 
 export default function Product(props) {
   return (
