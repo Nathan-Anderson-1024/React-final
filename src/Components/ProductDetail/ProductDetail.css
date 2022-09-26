@@ -46,4 +46,9 @@ body {
     flex-direction: column;
     height: 75%;
     margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.add-cart {
+    cursor: pointer;
+    padding: 1rem;
 }

@@ -49,6 +49,7 @@ export default function ProductDetail(props) {
               <button onClick={addQuantity}>+</button>
               <button onClick={removeQuantity}>-</button>
             </div>
+            <button className="add-cart">Add to Cart</button>
           </div>
           <h3 className="description-title">Description:</h3>
           <h4 className="description">{product[indexLocation].description}</h4>
