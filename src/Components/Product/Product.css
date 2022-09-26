@@ -30,3 +30,7 @@
 /* .product-img:hover {
     cursor: pointer;
 } */
+.item-link {
+    text-decoration: none;
+    color: black;
+}

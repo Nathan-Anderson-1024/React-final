@@ -33,7 +33,6 @@ body {
 .quantity {
     display: flex;
     align-items: center;
-    border: 1px solid red;
 }
 .quantity-title {
     margin-right: 1rem;

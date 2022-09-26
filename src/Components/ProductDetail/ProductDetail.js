@@ -1,13 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams } from "react-router";
 import './ProductDetail.css'
 
 
 //each individual product
 export default function ProductDetail(props) {
+  //pulls id and gets index position of shop element
   const { id } = useParams();
   const indexLocation = id - 1;
   const product = props.product;
+
+  //set state of quantity
+  const [quantity, setQuantity] = useState(1);
+
+  const addQuantity = () => {
+    setQuantity((previousQuantity) => previousQuantity + 1);
+  }
+
+  const removeQuantity = () => {
+    const quantityValue = quantity;
+    if (quantityValue <= 1) return;
+    setQuantity((previousQuantity) => previousQuantity - 1);
+  }
+
+  const handleUserQuantity = (event) => {
+    if (Number(event.target.value < 1) || event.target.value.includes('-')) {
+      setQuantity(1)
+    } else {
+      setQuantity(Number(event.target.value))
+    }
+    
+  }
+
   return (
     <>
       <div className="individual-product-container">
@@ -20,10 +44,10 @@ export default function ProductDetail(props) {
           <h3 className="price">${product[indexLocation].price}</h3>
           <div className="quantity">
             <h3 className="quantity-title">Quantity:</h3>
-            <input className="quantity-input" value={1}></input>
+            <input className="quantity-input" value={quantity} onChange={handleUserQuantity}></input>
             <div className="buttons">
-              <button>+</button>
-              <button>-</button>
+              <button onClick={addQuantity}>+</button>
+              <button onClick={removeQuantity}>-</button>
             </div>
           </div>
           <h3 className="description-title">Description:</h3>
