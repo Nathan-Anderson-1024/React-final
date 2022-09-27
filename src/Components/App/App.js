@@ -2,12 +2,38 @@ import NavBar from '../NavBar/NavBar';
 import ProductPage from '../ProductPage/ProductPage';
 import './App.css';
 import {Route, Routes} from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import ProductDetail from '../ProductDetail/ProductDetail';
 
+export const cartContext = React.createContext()
+
 function App() {
-  const [products, setProducts] = useState([])
+  //sets state for products from api
+  const [products, setProducts] = useState([]);
+  //sets state for quantity of item selected
+  const [quantity, setQuantity] = useState(1);
+  const [cart, setCart] = useState([]);
+
+  //adds 1 when clicking plus button
+  const addQuantity = () => {
+    setQuantity((previousQuantity) => previousQuantity + 1);
+  }
+  //removes 1 when clicking minus button
+  const removeQuantity = () => {
+    const quantityValue = quantity;
+    if (quantityValue <= 1) return;
+    setQuantity((previousQuantity) => previousQuantity - 1);
+  }
+
+  const handleUserQuantity = (event) => {
+    if (Number(event.target.value < 1) || event.target.value.includes('-')) {
+      setQuantity(1)
+    } else {
+      setQuantity(Number(event.target.value))
+    }
+    
+  }
 
   const getData = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -15,13 +41,16 @@ function App() {
     return json
   }
 
-
+  
+  //gets data from api
   useEffect(() => {
     getData().then(
-      result => setProducts(result)
+      result => {
+        return setProducts(result)}
     )
   }, [])
-  console.log(products)
+
+  
 
 
 
@@ -29,11 +58,14 @@ function App() {
     <div className='header'>
       <NavBar />
       <div className='App'>
+      <cartContext.Provider value={cart} >
         <Routes>
           <Route path='/' element={<ProductPage products={products} /> } />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/product/:id' element={<ProductDetail product={products} />} />
+          <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
+            addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>
+      </cartContext.Provider>
       </div>
     </div>
       

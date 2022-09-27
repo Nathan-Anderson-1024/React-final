@@ -1,6 +1,8 @@
-import React, {useState} from "react";
 import { useParams } from "react-router";
+import {useContext} from 'react'
+import { cartContext } from "../App/App";
 import './ProductDetail.css'
+
 
 
 //each individual product
@@ -9,27 +11,20 @@ export default function ProductDetail(props) {
   const { id } = useParams();
   const indexLocation = id - 1;
   const product = props.product;
+  const cartValues = useContext(cartContext);
 
-  //set state of quantity
-  const [quantity, setQuantity] = useState(1);
-
-  const addQuantity = () => {
-    setQuantity((previousQuantity) => previousQuantity + 1);
-  }
-
-  const removeQuantity = () => {
-    const quantityValue = quantity;
-    if (quantityValue <= 1) return;
-    setQuantity((previousQuantity) => previousQuantity - 1);
-  }
-
-  const handleUserQuantity = (event) => {
-    if (Number(event.target.value < 1) || event.target.value.includes('-')) {
-      setQuantity(1)
-    } else {
-      setQuantity(Number(event.target.value))
-    }
+  const handleUserQuantityEvent = (e) => {
+    props.handleUserQuantity(e)
     
+  }
+
+  const setLocalStorage = () => {
+    const updatedValue = {item: product[indexLocation].title,
+                          quantity: props.quantity}
+    props.setCart((prevState) => {
+      return [...prevState, updatedValue]
+    })
+    localStorage.setItem(`cart`, JSON.stringify(cartValues))
   }
 
   return (
@@ -44,12 +39,12 @@ export default function ProductDetail(props) {
           <h3 className="price">${product[indexLocation].price}</h3>
           <div className="quantity">
             <h3 className="quantity-title">Quantity:</h3>
-            <input className="quantity-input" value={quantity} onChange={handleUserQuantity}></input>
+            <input className="quantity-input" value={props.quantity} onChange={handleUserQuantityEvent}></input>
             <div className="buttons">
-              <button onClick={addQuantity}>+</button>
-              <button onClick={removeQuantity}>-</button>
+              <button onClick={props.addQuantity}>+</button>
+              <button onClick={props.removeQuantity}>-</button>
             </div>
-            <button className="add-cart">Add to Cart</button>
+            <button className="add-cart" onClick={setLocalStorage}>Add to Cart</button>
           </div>
           <h3 className="description-title">Description:</h3>
           <h4 className="description">{product[indexLocation].description}</h4>
