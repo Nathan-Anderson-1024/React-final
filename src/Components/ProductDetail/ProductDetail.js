@@ -22,7 +22,8 @@ export default function ProductDetail(props) {
     const updatedValue = {item: product[indexLocation].title,
                           quantity: props.quantity,
                           img: product[indexLocation].image,
-                          price:product[indexLocation].price}
+                          price: product[indexLocation].price,
+                        id: product[indexLocation].id}
     props.setCart((prevState) => {
       return [...prevState, updatedValue]
     })

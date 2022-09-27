@@ -50,6 +50,12 @@ function App() {
     )
   }, [])
 
+  //removes item from cart
+  const removeItem = (itemId) => {
+    const newTotal = [...cart];
+    const removedItem = newTotal.filter((item) => item.id !== itemId)
+    setCart(removedItem)
+  }
   
 
 
@@ -61,7 +67,7 @@ function App() {
       <cartContext.Provider value={cart} >
         <Routes>
           <Route path='/' element={<ProductPage products={products} /> } />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<Cart removeItem={removeItem} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>

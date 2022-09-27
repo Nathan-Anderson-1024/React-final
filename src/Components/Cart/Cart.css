@@ -34,6 +34,18 @@ body {
     width: 60px;
     text-align: center;
 }
+/* Close button */
+.close-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.close-button {
+    margin-left: 1rem;
+}
+.close-button:hover {
+    background-color: red;
+    cursor: pointer;
+}
 .quantity-container {
     display: flex;
     flex-direction: column;
