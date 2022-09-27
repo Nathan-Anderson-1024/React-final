@@ -1,13 +1,13 @@
 import React from 'react'
 import './Cart.css'
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
   // total cost state for each item
-  const [totalCost, setTotalCost] = useState([]);
+  //const [totalCost, setTotalCost] = useState([]);
   //total for the whole order
-  const [subtotal, setSubtotal] = useState(0)
+  //const [subtotal, setSubtotal] = useState(0)
   //get cart data
   const cartValues = useContext(cartContext);
   //console.log(quantity)
