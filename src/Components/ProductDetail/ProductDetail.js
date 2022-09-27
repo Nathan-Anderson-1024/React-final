@@ -20,7 +20,9 @@ export default function ProductDetail(props) {
 
   const setLocalStorage = () => {
     const updatedValue = {item: product[indexLocation].title,
-                          quantity: props.quantity}
+                          quantity: props.quantity,
+                          img: product[indexLocation].image,
+                          price:product[indexLocation].price}
     props.setCart((prevState) => {
       return [...prevState, updatedValue]
     })
@@ -36,7 +38,7 @@ export default function ProductDetail(props) {
         <div className="product-info-right">
           <h2 className="category">{product[indexLocation].category}</h2>
           <h1 className="title">{product[indexLocation].title}</h1>
-          <h3 className="price">${product[indexLocation].price}</h3>
+          <h3 className="price">${product[indexLocation].price.toFixed(2)}</h3>
           <div className="quantity">
             <h3 className="quantity-title">Quantity:</h3>
             <input className="quantity-input" value={props.quantity} onChange={handleUserQuantityEvent}></input>

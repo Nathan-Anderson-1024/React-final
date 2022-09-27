@@ -35,3 +35,41 @@ body {
     /* justify-content: center; */
     border: 1px solid magenta;
 }
+/* Image styling  */
+.cart-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-img-container, .cart-img-container img {
+    height: 10vh;
+}
+/* Price styling */
+.total-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border: 1px solid magenta;
+}
+/* order summary */
+.order-summary-container {
+    display: flex;
+    flex-direction: column;
+}
+.order-summary {
+    text-decoration: underline;
+    margin: 1rem;
+}
+.subtotal-container {
+    border: 1px solid green;
+    margin: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+}
+/* Checkout button */
+.checkout-button {
+    grid-column: 1 / -1;
+    cursor: pointer;
+}
