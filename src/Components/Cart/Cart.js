@@ -1,11 +1,27 @@
 import React from 'react'
 import './Cart.css'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
+  const [totalCost, setTotalCost] = useState([]);
+  const [subtotal, setSubtotal] = useState(0)
   //get cart data
   const cartValues = useContext(cartContext);
+  //const itemTotals = cartValues.forEach(item => item.quantity * item.price)
+  
+  const itemTotals = (e) => {
+    for (let item of cartValues) {
+      console.log(e.target.value)
+      const totalItemCost = e.target.value * item.price
+      //console.log(totalItemCost)
+      setTotalCost((previousState) => [...previousState, totalItemCost]);
+    }
+    const newTotal = [...totalCost];
+    const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue)
+    setSubtotal(newSubtotal);
+  }
+  console.log(itemTotals)
   return (
     <div className='cart-container'>
       <h1 className='cart-header'>Your Shopping Cart</h1>
@@ -18,7 +34,7 @@ export default function Cart(props) {
             <div><p className='item'>{items.item}</p></div>
             <div className='quantity-container'>
               <p>Quantity</p>
-              <p className='item'>{items.quantity}</p>
+              <input className='item-quantity' value={items.quantity} onChange={itemTotals}></input>
             </div>
             <div className='total-container'>
               <p>Total</p>

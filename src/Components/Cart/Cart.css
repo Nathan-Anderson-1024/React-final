@@ -27,6 +27,12 @@ body {
 }
 .item {
     font-size: 2rem;
+    
+}
+.item-quantity {
+    font-size: 2rem;
+    width: 60px;
+    text-align: center;
 }
 .quantity-container {
     display: flex;
