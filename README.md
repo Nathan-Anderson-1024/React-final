@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### TODO List
+1. Enable quantity change in cart
+2. count subtotal and total in cart
+3. fix styling issues with some images in products
+4. Add pop up when user adds item to cart
+5. Create Checkout page
+6. filtering by category
+7. filtering by search term
+8. order by price (high to low / low to high)
+9. Context API cleanup
+10. general code cleanup

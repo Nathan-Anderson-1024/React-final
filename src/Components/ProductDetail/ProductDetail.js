@@ -17,19 +17,35 @@ export default function ProductDetail(props) {
     props.handleUserQuantity(e)
     
   }
-
-  const setLocalStorage = () => {
-    const updatedValue = {item: product[indexLocation].title,
-                          quantity: props.quantity,
-                          img: product[indexLocation].image,
-                          price: product[indexLocation].price,
-                        id: product[indexLocation].id}
-    props.setCart((prevState) => {
+  //adds items to cart, checks if cart already has item, if it does it updates the current total, if not it adds it
+  const addCartItem = (itemId) => {
+    const newCart = [...cartValues];
+    const result = newCart.find(({ id }) => id === itemId);
+    if (result === undefined) {
+      const updatedValue = {
+        item: product[indexLocation].title,
+        quantity: props.quantity,
+        img: product[indexLocation].image,
+        price: product[indexLocation].price,
+        id: product[indexLocation].id
+      }
+      props.setCart((prevState) => {
       return [...prevState, updatedValue]
-    })
+      })
+    } else {
+      const newState = newCart.map(item => {
+        if (item.id === itemId) {
+          return {...item, quantity: item.quantity + props.quantity}
+        }
+        return item;
+      })
+      props.setCart(newState)
+    }
     localStorage.setItem(`cart`, JSON.stringify(cartValues))
   }
-
+  //if product already in cart update total by user input
+  //so if a user has 1 in their cart, and they add 2 to cart new quantity should be 3
+  
   return (
     <>
       <div className="individual-product-container">
@@ -47,7 +63,7 @@ export default function ProductDetail(props) {
               <button onClick={props.addQuantity}>+</button>
               <button onClick={props.removeQuantity}>-</button>
             </div>
-            <button className="add-cart" onClick={setLocalStorage}>Add to Cart</button>
+            <button className="add-cart" onClick={() => addCartItem(product[indexLocation].id)}>Add to Cart</button>
           </div>
           <h3 className="description-title">Description:</h3>
           <h4 className="description">{product[indexLocation].description}</h4>

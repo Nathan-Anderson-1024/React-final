@@ -27,21 +27,25 @@ export default function Cart(props) {
   // }, [totalCost, cartValues])
 
 
-  const itemTotals = (event) => {
-    //console.log(event.target.value)
-    for (let item of cartValues) {
-      const totalItemCost = item.quantity * item.price
+  // const itemTotals = (event) => {
+  //   console.log(event.target.value)
+  //   for (let item of cartValues) {
+  //     const totalItemCost = event.target.value * item.price
       
-      setTotalCost((previousState) => [...previousState, totalItemCost]);
-    }
-    if (!totalCost) return;
-    const newTotal = [...totalCost];
-    const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue)
-    setSubtotal(newSubtotal);
-    //console.log(subtotal)
-  }
+  //     setTotalCost((previousState) => [...previousState, totalItemCost]);
+  //   }
+  //   if (!totalCost) return;
+  //   const newTotal = [...totalCost];
+  //   const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  //   setSubtotal(newSubtotal);
+  //   //console.log(subtotal)
+  // }
   
-
+  // const handleUserQuantityEvent = (e) => {
+  //   props.handleCartQuantity(e)
+    
+  // }
+  
   
 
   return (
@@ -57,7 +61,7 @@ export default function Cart(props) {
             <div className='quantity-container'>
               <p>Quantity</p>
               <div className='close-container'>
-                <input className='item-quantity' value={items.quantity} onChange={itemTotals}></input>
+                <input className='item-quantity' value={items.quantity} onChange={() => console.log('test')}></input>
                 <button className='close-button' onClick={() => props.removeItem(items.id)}>&times;</button>
               </div>
             </div>
@@ -73,7 +77,7 @@ export default function Cart(props) {
         <h2 className='order-summary'>Order Summary</h2>
         <div className='subtotal-container'>
           <h3>Subtotal:</h3>
-          <h3>{subtotal}</h3>
+          <h3>{props.subtotal}</h3>
           <h3>Shipping:</h3>
           <h3>FREE</h3>
           <h3>Estimated Tax:</h3>

@@ -13,8 +13,11 @@ function App() {
   const [products, setProducts] = useState([]);
   //sets state for quantity of item selected
   const [quantity, setQuantity] = useState(1);
+
   const [cart, setCart] = useState([]);
 
+  const [subtotal, setSubtotal] = useState(0)
+  const [totalCost, setTotalCost] = useState([]);
   //adds 1 when clicking plus button
   const addQuantity = () => {
     setQuantity((previousQuantity) => previousQuantity + 1);
@@ -25,7 +28,7 @@ function App() {
     if (quantityValue <= 1) return;
     setQuantity((previousQuantity) => previousQuantity - 1);
   }
-
+  //handles quantity changes in ProductDetails.js
   const handleUserQuantity = (event) => {
     if (Number(event.target.value < 1) || event.target.value.includes('-')) {
       setQuantity(1)
@@ -33,6 +36,34 @@ function App() {
       setQuantity(Number(event.target.value))
     }
     
+  }
+  //handle cart quantity
+  // const handleCartQuantity = (event) => {
+  //   if (Number(event.target.value < 1) || event.target.value.includes('-')) {
+  //     setCart((previousCart) => [...previousCart, {...cart, quantity: 1}])
+  //   } else {
+  //     const updatedValue = {
+  //       quantity: event.target.value
+  //     }
+  //     // setCart((previousCart) => {
+  //     //   return [...previousCart, updatedValue]
+  //     // })
+  //     setCart((previousCart) => [...previousCart, {quantity: event.target.value}])
+  //     console.log(cart)
+  //   }
+  // }
+  //handles subtotal
+  const itemTotals = (event) => {
+    for (let item of cart) {
+      const totalItemCost = event.target.value * item.price
+      console.log(totalItemCost)
+      setTotalCost((previousState) => [...previousState, totalItemCost]);
+      
+    }
+    if (!cart) return;
+    const newTotal = [...cart];
+    const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+    setSubtotal(newSubtotal);
   }
 
   const getData = async () => {
@@ -67,7 +98,7 @@ function App() {
       <cartContext.Provider value={cart} >
         <Routes>
           <Route path='/' element={<ProductPage products={products} /> } />
-          <Route path='/cart' element={<Cart removeItem={removeItem} />} />
+          <Route path='/cart' element={<Cart removeItem={removeItem} itemTotals={itemTotals} subtotal={subtotal} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>
