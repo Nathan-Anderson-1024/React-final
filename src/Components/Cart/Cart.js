@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
+  //get cart data
   const cartValues = useContext(cartContext);
   return (
     <div className='cart-container'>
@@ -11,15 +12,24 @@ export default function Cart(props) {
       {cartValues.map((items, i) => {
         return  (
           <div className='item-container' key={i}>
+            <div>
+            <p>IMG</p>
+            </div>
             <div><p className='item'>{items.item}</p></div>
             <div className='quantity-container'>
               <p>Quantity</p>
               <p className='item'>{items.quantity}</p>
             </div>
+            <div>
+              <p>Total</p>
+            </div>
+            
           </div>
         )
       })}
-      
+      <div>
+        <p>Order Summary</p>
+      </div>
     </div>
   )
 }
