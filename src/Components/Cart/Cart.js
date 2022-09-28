@@ -1,23 +1,69 @@
 import React from 'react'
 import './Cart.css'
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect} from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
+  
   
   //total for the whole order
   const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
   //get cart data
   const cartValues = useContext(cartContext);
   
-  
+  useEffect(() => {
+    subtotals();
+  }, [cartValues])
   //removes item from cart
   const removeItem = (itemId) => {
     const newTotal = [...cartValues];
     const removedItem = newTotal.filter((item) => item.id !== itemId)
     props.setCart(removedItem)
   }
-  
+  //handle quantity change
+  const handleQuantityChange = (event) => {
+    const newCart = [...cartValues]
+    console.log(event.target)
+    console.log(newCart)
+    return event.target.value
+    
+  }
+
+  //onChange can only take one argument ie (event) => handleQuantityChange(event)
+  //need to get the item id I want to update quantity for
+  //need to take the event value and pass it in and update quantity
+  const compareItemId = (itemId) => {
+    const newCart = [...cartValues];
+    const newState = newCart.map(item => {
+      if (item.id === itemId) {
+        return {...item, quantity: handleQuantityChange()}
+      }
+      return item;
+    })
+    props.setCart(newState)
+
+  }
+
+  const updateQuantity = (itemId) => {
+    const newCart = [...cartValues]
+    const newState = newCart.map(item => {
+      if (item.id === itemId) {
+        return {...item, quantity: item.quantity + props.quantity, totalCost: item.totalCost + props.quantity * item.price}
+      }
+      return item;
+    })
+    props.setCart(newState)
+  }
+
+
+
+
+
+
+
+
+
+
   //calculate subtotal, estimated tax, and estimated total
   const subtotals = () => {
     if (cartValues.length === 0) return;
@@ -47,7 +93,18 @@ export default function Cart(props) {
             <div className='quantity-container'>
               <p>Quantity</p>
               <div className='close-container'>
-                <input className='item-quantity' value={items.quantity} onClick={subtotals}></input>
+                <select className='item-quantity' onChange={handleQuantityChange} value={items.quantity}>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
+                </select>
                 <button className='close-button' onClick={() => removeItem(items.id)}>&times;</button>
               </div>
             </div>

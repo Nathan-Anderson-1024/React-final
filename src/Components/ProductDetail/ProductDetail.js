@@ -19,6 +19,7 @@ export default function ProductDetail(props) {
   }
   //adds items to cart, checks if cart already has item, if it does it updates the current total, if not it adds it
   const addCartItem = (itemId) => {
+    //checks to see if item in cart, if not add it
     const newCart = [...cartValues];
     const result = newCart.find(({ id }) => id === itemId);
     if (result === undefined) {
@@ -33,7 +34,9 @@ export default function ProductDetail(props) {
       props.setCart((prevState) => {
       return [...prevState, updatedValue]
       })
-    } else {
+    }
+    //if item already in cart add selected number to the already existing number 
+    else {
       const newState = newCart.map(item => {
         if (item.id === itemId) {
           return {...item, quantity: item.quantity + props.quantity, totalCost: item.totalCost + props.quantity * item.price}

@@ -36,22 +36,6 @@ function App() {
     }
     
   }
-  //handle cart quantity
-  // const handleCartQuantity = (event) => {
-  //   if (Number(event.target.value < 1) || event.target.value.includes('-')) {
-  //     setCart((previousCart) => [...previousCart, {...cart, quantity: 1}])
-  //   } else {
-  //     const updatedValue = {
-  //       quantity: event.target.value
-  //     }
-  //     // setCart((previousCart) => {
-  //     //   return [...previousCart, updatedValue]
-  //     // })
-  //     setCart((previousCart) => [...previousCart, {quantity: event.target.value}])
-  //     console.log(cart)
-  //   }
-  // }
-  //handles subtotal
   
 
   const getData = async () => {
@@ -81,7 +65,7 @@ function App() {
       <cartContext.Provider value={cart} >
         <Routes>
           <Route path='/' element={<ProductList products={products} /> } />
-          <Route path='/cart' element={<Cart setCart={setCart} />} />
+          <Route path='/cart' element={<Cart setCart={setCart} product={products} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>
