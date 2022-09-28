@@ -27,6 +27,7 @@ export default function ProductDetail(props) {
         quantity: props.quantity,
         img: product[indexLocation].image,
         price: product[indexLocation].price,
+        totalCost: product[indexLocation].price * props.quantity,
         id: product[indexLocation].id
       }
       props.setCart((prevState) => {
@@ -35,7 +36,7 @@ export default function ProductDetail(props) {
     } else {
       const newState = newCart.map(item => {
         if (item.id === itemId) {
-          return {...item, quantity: item.quantity + props.quantity}
+          return {...item, quantity: item.quantity + props.quantity, totalCost: item.totalCost + props.quantity * item.price}
         }
         return item;
       })

@@ -16,8 +16,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
 
-  const [subtotal, setSubtotal] = useState(0)
-  const [totalCost, setTotalCost] = useState([]);
+  
   //adds 1 when clicking plus button
   const addQuantity = () => {
     setQuantity((previousQuantity) => previousQuantity + 1);
@@ -53,18 +52,7 @@ function App() {
   //   }
   // }
   //handles subtotal
-  const itemTotals = (event) => {
-    for (let item of cart) {
-      const totalItemCost = event.target.value * item.price
-      console.log(totalItemCost)
-      setTotalCost((previousState) => [...previousState, totalItemCost]);
-      
-    }
-    if (!cart) return;
-    const newTotal = [...cart];
-    const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-    setSubtotal(newSubtotal);
-  }
+  
 
   const getData = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -93,7 +81,7 @@ function App() {
       <cartContext.Provider value={cart} >
         <Routes>
           <Route path='/' element={<ProductList products={products} /> } />
-          <Route path='/cart' element={<Cart setCart={setCart} itemTotals={itemTotals} subtotal={subtotal} />} />
+          <Route path='/cart' element={<Cart setCart={setCart} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>
