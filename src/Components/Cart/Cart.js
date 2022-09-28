@@ -45,6 +45,12 @@ export default function Cart(props) {
   //   props.handleCartQuantity(e)
     
   // }
+  //removes item from cart
+  const removeItem = (itemId) => {
+    const newTotal = [...cartValues];
+    const removedItem = newTotal.filter((item) => item.id !== itemId)
+    props.setCart(removedItem)
+  }
   
   
 
@@ -62,7 +68,7 @@ export default function Cart(props) {
               <p>Quantity</p>
               <div className='close-container'>
                 <input className='item-quantity' value={items.quantity} onChange={() => console.log('test')}></input>
-                <button className='close-button' onClick={() => props.removeItem(items.id)}>&times;</button>
+                <button className='close-button' onClick={() => removeItem(items.id)}>&times;</button>
               </div>
             </div>
             <div className='total-container'>

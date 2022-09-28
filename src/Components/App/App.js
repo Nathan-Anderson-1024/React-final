@@ -1,10 +1,10 @@
 import NavBar from '../NavBar/NavBar';
-import ProductPage from '../ProductPage/ProductPage';
 import './App.css';
 import {Route, Routes} from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import ProductDetail from '../ProductDetail/ProductDetail';
+import ProductList from '../ProductList/ProductList';
 
 export const cartContext = React.createContext()
 
@@ -81,12 +81,7 @@ function App() {
     )
   }, [])
 
-  //removes item from cart
-  const removeItem = (itemId) => {
-    const newTotal = [...cart];
-    const removedItem = newTotal.filter((item) => item.id !== itemId)
-    setCart(removedItem)
-  }
+  
   
 
 
@@ -97,8 +92,8 @@ function App() {
       <div className='App'>
       <cartContext.Provider value={cart} >
         <Routes>
-          <Route path='/' element={<ProductPage products={products} /> } />
-          <Route path='/cart' element={<Cart removeItem={removeItem} itemTotals={itemTotals} subtotal={subtotal} />} />
+          <Route path='/' element={<ProductList products={products} /> } />
+          <Route path='/cart' element={<Cart setCart={setCart} itemTotals={itemTotals} subtotal={subtotal} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>
