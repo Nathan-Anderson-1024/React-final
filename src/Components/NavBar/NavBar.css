@@ -5,13 +5,15 @@ body {
     margin: 0;
 }
 .navbar {
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
     padding: 0 1rem;
+    box-shadow: 0 0.125rem .25rem rgba(47, 46, 46, 0.75);
+    height: 5vh;
 }
 .site-title {
     font-size: 2rem;
@@ -32,7 +34,7 @@ body {
     padding: 0.25rem;
 }
 .navbar li .active {
-    background-color: #555;
+    background-color: rgba(107, 105, 105, 0.75);
 }
 .navbar li:hover {
     background-color: #777;
