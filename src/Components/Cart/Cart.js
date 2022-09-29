@@ -1,20 +1,22 @@
 import React from 'react'
 import './Cart.css'
-import { useContext, useState, useEffect} from 'react';
-import { cartContext } from '../App/App';
+import { useState, useEffect} from 'react';
+import { useCart } from '../../Context/CartContext';
+import { NumericFormat } from 'react-number-format'
 
-export default function Cart(props) {
+
+export default function Cart() {
   
   //total for the whole order
   const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
   //get cart data
-  const cartValues = useContext(cartContext);
+  const {removeItem, setCart, cart} = useCart();
   
   useEffect(() => {
     //calculate subtotal, estimated tax, and estimated total
     const subtotals = () => {
-    if (cartValues.length === 0) return;
-    const newCart = [...cartValues];
+    if (cart.length === 0) return;
+    const newCart = [...cart];
     const eachSubtotal = [];
     for (let item of newCart) {
       eachSubtotal.push(item.totalCost)
@@ -26,27 +28,22 @@ export default function Cart(props) {
     }
     
     subtotals();
-  }, [cartValues])
-  //removes item from cart
-  const removeItem = (itemId) => {
-    const newTotal = [...cartValues];
-    const removedItem = newTotal.filter((item) => item.id !== itemId)
-    props.setCart(removedItem)
-  }
+  }, [cart])
+  
   
 
   //onChange can only take one argument ie (event) => handleQuantityChange(event)
   //need to get the item id I want to update quantity for
   //need to take the event value and pass it in and update quantity
   const compareItemId = (itemId, event) => {
-    const newCart = [...cartValues];
+    const newCart = [...cart];
     const newState = newCart.map(item => {
       if (item.id === itemId) {
         return {...item, quantity: event.target.value, totalCost: event.target.value * item.price}
       }
       return item;
     })
-    props.setCart(newState)
+    setCart(newState)
 
   }
 
@@ -54,7 +51,7 @@ export default function Cart(props) {
   return (
     <div className='cart-container'>
       <h1 className='cart-header'>Your Shopping Cart</h1>
-      {cartValues.map((items, i) => {
+      {cart.map((items, i) => {
         return  (
           <div className='item-container' key={i}>
             <div className='cart-img-container'>
@@ -81,27 +78,39 @@ export default function Cart(props) {
             </div>
             <div className='total-container'>
               <p>Total</p>
-              <p>${items.price.toFixed(2) * items.quantity}</p>
+              <NumericFormat value={items.price} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
             </div>
             
           </div>
         )
       })}
-      {cartValues.length > 0 && <div className='order-summary-container'>
+      {cart.length > 0 && <div className='order-summary-container'>
         <h2 className='order-summary'>Order Summary</h2>
         <div className='subtotal-container'>
           <h3>Subtotal:</h3>
-          <h3>${subtotal.subtotal}</h3>
+          <h3>
+            <NumericFormat value={subtotal.subtotal} displayType={'text'} 
+            thousandSeparator={true} prefix={'$'} 
+            decimalScale={2} fixedDecimalScale={true} />
+          </h3>
           <h3>Shipping:</h3>
           <h3>FREE</h3>
           <h3>Estimated Tax:</h3>
-          <h3>${subtotal.tax}</h3>
+          <h3>
+            <NumericFormat value={subtotal.tax} displayType={'text'} 
+            thousandSeparator={true} prefix={'$'} 
+            decimalScale={2} fixedDecimalScale={true} />
+          </h3>
           <h3>Estimated Total:</h3>
-          <h3>${subtotal.estimatedTotal}</h3>
+          <h3>
+            <NumericFormat value={subtotal.estimatedTotal} displayType={'text'} 
+            thousandSeparator={true} prefix={'$'} 
+            decimalScale={2} fixedDecimalScale={true} />
+          </h3>
           <button className='checkout-button'>CHECKOUT</button>
         </div>
       </div>}
-      {cartValues.length === 0 && <h2 className='order-summary'>Your Cart is Empty.</h2>}
+      {cart.length === 0 && <h2 className='order-summary'>Your Cart is Empty.</h2>}
     </div>
   )
 }

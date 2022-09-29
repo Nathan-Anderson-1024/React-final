@@ -1,9 +1,12 @@
 import React from 'react'
 import Product from '../Product/Product'
-export default function ProductList(props) {
+import { useCart } from '../../Context/CartContext';
+
+export default function ProductList() {
+  const {products} = useCart();
   return (
     <div className='product-container'>
-      {props.products.map((product) => {
+      {products.map((product) => {
         return <Product key={product.id} product={product}  />
       })}
       

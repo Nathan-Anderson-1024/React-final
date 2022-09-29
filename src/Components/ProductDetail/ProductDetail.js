@@ -1,8 +1,6 @@
 import { useParams } from "react-router";
-import {useContext} from 'react'
-import { cartContext } from "../App/App";
 import './ProductDetail.css'
-
+import { useCart } from "../../Context/CartContext";
 
 
 //each individual product
@@ -10,9 +8,10 @@ export default function ProductDetail(props) {
   //pulls id and gets index position of shop element
   const { id } = useParams();
   const indexLocation = id - 1;
-  const product = props.product;
-  const cartValues = useContext(cartContext);
+  
 
+  const { setCart, addQuantity, removeQuantity, quantity, products, cart } = useCart();
+  const product = products;
   const handleUserQuantityEvent = (e) => {
     props.handleUserQuantity(e)
     
@@ -20,18 +19,18 @@ export default function ProductDetail(props) {
   //adds items to cart, checks if cart already has item, if it does it updates the current total, if not it adds it
   const addCartItem = (itemId) => {
     //checks to see if item in cart, if not add it
-    const newCart = [...cartValues];
+    const newCart = [...cart];
     const result = newCart.find(({ id }) => id === itemId);
     if (result === undefined) {
       const updatedValue = {
         item: product[indexLocation].title,
-        quantity: props.quantity,
+        quantity: quantity,
         img: product[indexLocation].image,
         price: product[indexLocation].price,
-        totalCost: product[indexLocation].price * props.quantity,
+        totalCost: product[indexLocation].price * quantity,
         id: product[indexLocation].id
       }
-      props.setCart((prevState) => {
+      setCart((prevState) => {
       return [...prevState, updatedValue]
       })
     }
@@ -39,16 +38,14 @@ export default function ProductDetail(props) {
     else {
       const newState = newCart.map(item => {
         if (item.id === itemId) {
-          return {...item, quantity: item.quantity + props.quantity, totalCost: item.totalCost + props.quantity * item.price}
+          return {...item, quantity: item.quantity + quantity, totalCost: item.totalCost + quantity * item.price}
         }
         return item;
       })
-      props.setCart(newState)
+      setCart(newState)
     }
-    localStorage.setItem(`cart`, JSON.stringify(cartValues))
+    localStorage.setItem(`cart`, JSON.stringify(cart))
   }
-  //if product already in cart update total by user input
-  //so if a user has 1 in their cart, and they add 2 to cart new quantity should be 3
   
   return (
     <>
@@ -62,10 +59,10 @@ export default function ProductDetail(props) {
           <h3 className="price">${product[indexLocation].price.toFixed(2)}</h3>
           <div className="quantity">
             <h3 className="quantity-title">Quantity:</h3>
-            <input className="quantity-input" value={props.quantity} onChange={handleUserQuantityEvent}></input>
+            <input className="quantity-input" value={quantity} onChange={handleUserQuantityEvent}></input>
             <div className="buttons">
-              <button onClick={props.addQuantity}>+</button>
-              <button onClick={props.removeQuantity}>-</button>
+              <button onClick={() => addQuantity()}>+</button>
+              <button onClick={() => removeQuantity()}>-</button>
             </div>
             <button className="add-cart" onClick={() => addCartItem(product[indexLocation].id)}>Add to Cart</button>
           </div>
