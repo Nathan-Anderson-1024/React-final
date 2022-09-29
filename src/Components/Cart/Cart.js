@@ -4,7 +4,7 @@ import { useContext, useState, useEffect} from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
-  
+  const product = props.product;
   
   //total for the whole order
   const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
@@ -32,11 +32,11 @@ export default function Cart(props) {
   //onChange can only take one argument ie (event) => handleQuantityChange(event)
   //need to get the item id I want to update quantity for
   //need to take the event value and pass it in and update quantity
-  const compareItemId = (itemId) => {
+  const compareItemId = (itemId, event) => {
     const newCart = [...cartValues];
     const newState = newCart.map(item => {
       if (item.id === itemId) {
-        return {...item, quantity: handleQuantityChange()}
+        return {...item, quantity: handleQuantityChange(event)}
       }
       return item;
     })
@@ -75,7 +75,7 @@ export default function Cart(props) {
     const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
     const tax = newSubtotal * .07;
     const estimatedTotal = newSubtotal + tax;
-    setSubtotal({subtotal: newSubtotal, tax: tax, estimatedTotal: estimatedTotal});
+    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
   }
   
   
@@ -93,7 +93,7 @@ export default function Cart(props) {
             <div className='quantity-container'>
               <p>Quantity</p>
               <div className='close-container'>
-                <select className='item-quantity' onChange={handleQuantityChange} value={items.quantity}>
+                <select className='item-quantity' onChange={(event) => compareItemId(items.id, event)} value={items.quantity}>
                   <option value={1}>1</option>
                   <option value={2}>2</option>
                   <option value={3}>3</option>
@@ -124,9 +124,9 @@ export default function Cart(props) {
           <h3>Shipping:</h3>
           <h3>FREE</h3>
           <h3>Estimated Tax:</h3>
-          <h3>${subtotal.tax.toFixed(2)}</h3>
+          <h3>${subtotal.tax}</h3>
           <h3>Estimated Total:</h3>
-          <h3>${subtotal.estimatedTotal.toFixed(2)}</h3>
+          <h3>${subtotal.estimatedTotal}</h3>
           <button className='checkout-button'>CHECKOUT</button>
         </div>
       </div>}
