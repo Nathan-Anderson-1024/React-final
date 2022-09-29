@@ -4,6 +4,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa;
 }
 .individual-product-container {
     display: flex;
@@ -15,6 +16,7 @@ body {
 .img-left {
     height: 50vh;
     max-width: 25vw;
+    mix-blend-mode: multiply;
 }
 .img-left img {
     height: 100%;

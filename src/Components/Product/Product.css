@@ -20,6 +20,7 @@
 } */
 .product-img {
     max-width: 150px;
+    mix-blend-mode: multiply;
 }
 .product-name {
     padding: 0;
@@ -33,4 +34,5 @@
 .item-link {
     text-decoration: none;
     color: black;
+    background-color: radial-gradient(circle, rgba(248,249,250,1) 0%, rgba(255,255,255,1) 100%);
 }

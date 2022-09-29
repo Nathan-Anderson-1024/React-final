@@ -24,6 +24,7 @@ export default function Cart(props) {
     const estimatedTotal = newSubtotal + tax;
     setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
     }
+    
     subtotals();
   }, [cartValues])
   //removes item from cart
@@ -41,7 +42,7 @@ export default function Cart(props) {
     const newCart = [...cartValues];
     const newState = newCart.map(item => {
       if (item.id === itemId) {
-        return {...item, quantity: event.target.value}
+        return {...item, quantity: event.target.value, totalCost: event.target.value * item.price}
       }
       return item;
     })
