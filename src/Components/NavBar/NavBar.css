@@ -13,6 +13,7 @@ body {
     gap: 2rem;
     padding: 0 1rem;
     box-shadow: 0 0.125rem .25rem rgba(47, 46, 46, 0.75);
+    height: 5vh;
 }
 .site-title {
     font-size: 2rem;

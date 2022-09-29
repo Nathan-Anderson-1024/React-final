@@ -7,6 +7,7 @@
     grid-template-rows: repeat(5, minmax(100px, 1fr));
     justify-items: center;
     align-items: center;
+    margin: 1rem;
 }
 .product-wrapper {
     display: flex;
@@ -35,4 +36,24 @@
     text-decoration: none;
     color: black;
     background-color: radial-gradient(circle, rgba(248,249,250,1) 0%, rgba(255,255,255,1) 100%);
+    padding: 1rem;
+}
+.item-link:hover {
+    background-color: rgba(128, 128, 128, 0.25);
+    border-radius: 5px;
+    transition: ease-in-out 125ms;
+}
+.item-link .add-button {
+    margin-top: 1rem;
+    height: 2rem;
+    display: none;
+}
+.item-link:hover .add-button {
+    cursor: pointer;
+    display: block;
+}
+.add-button:hover {
+    background-color: rgba(42, 42, 251, 0.998);
+    color: white;
+    border-radius: 5px;
 }
