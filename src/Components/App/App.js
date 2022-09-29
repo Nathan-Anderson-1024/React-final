@@ -1,10 +1,10 @@
 import NavBar from '../NavBar/NavBar';
-import ProductPage from '../ProductPage/ProductPage';
 import './App.css';
 import {Route, Routes} from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import ProductDetail from '../ProductDetail/ProductDetail';
+import ProductList from '../ProductList/ProductList';
 
 export const cartContext = React.createContext()
 
@@ -16,8 +16,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
 
-  const [subtotal, setSubtotal] = useState(0)
-  const [totalCost, setTotalCost] = useState([]);
+  
   //adds 1 when clicking plus button
   const addQuantity = () => {
     setQuantity((previousQuantity) => previousQuantity + 1);
@@ -32,39 +31,18 @@ function App() {
   const handleUserQuantity = (event) => {
     if (Number(event.target.value < 1) || event.target.value.includes('-')) {
       setQuantity(1)
-    } else {
+    } 
+    else if (Number(event.target.value > 100)) {
+      alert('You cannot purchase more than 100 of each item.')
+      setQuantity(100)
+    }
+    
+    else {
       setQuantity(Number(event.target.value))
     }
     
   }
-  //handle cart quantity
-  // const handleCartQuantity = (event) => {
-  //   if (Number(event.target.value < 1) || event.target.value.includes('-')) {
-  //     setCart((previousCart) => [...previousCart, {...cart, quantity: 1}])
-  //   } else {
-  //     const updatedValue = {
-  //       quantity: event.target.value
-  //     }
-  //     // setCart((previousCart) => {
-  //     //   return [...previousCart, updatedValue]
-  //     // })
-  //     setCart((previousCart) => [...previousCart, {quantity: event.target.value}])
-  //     console.log(cart)
-  //   }
-  // }
-  //handles subtotal
-  const itemTotals = (event) => {
-    for (let item of cart) {
-      const totalItemCost = event.target.value * item.price
-      console.log(totalItemCost)
-      setTotalCost((previousState) => [...previousState, totalItemCost]);
-      
-    }
-    if (!cart) return;
-    const newTotal = [...cart];
-    const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-    setSubtotal(newSubtotal);
-  }
+  
 
   const getData = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -81,12 +59,7 @@ function App() {
     )
   }, [])
 
-  //removes item from cart
-  const removeItem = (itemId) => {
-    const newTotal = [...cart];
-    const removedItem = newTotal.filter((item) => item.id !== itemId)
-    setCart(removedItem)
-  }
+  
   
 
 
@@ -97,8 +70,8 @@ function App() {
       <div className='App'>
       <cartContext.Provider value={cart} >
         <Routes>
-          <Route path='/' element={<ProductPage products={products} /> } />
-          <Route path='/cart' element={<Cart removeItem={removeItem} itemTotals={itemTotals} subtotal={subtotal} />} />
+          <Route path='/' element={<ProductList products={products} /> } />
+          <Route path='/cart' element={<Cart setCart={setCart} product={products} />} />
           <Route path='/product/:id' element={<ProductDetail product={products} quantity={quantity} setCart={setCart}
             addQuantity={addQuantity} removeQuantity={removeQuantity} handleUserQuantity={handleUserQuantity} setQuantity={setQuantity} />} />
         </Routes>

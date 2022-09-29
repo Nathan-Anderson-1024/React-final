@@ -70,6 +70,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### TODO List
+
 1. Enable quantity change in cart
 2. count subtotal and total in cart
 3. fix styling issues with some images in products
@@ -80,3 +81,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 8. order by price (high to low / low to high)
 9. Context API cleanup
 10. general code cleanup
+11. Limit the number of items a user can add.
+12. Update subtotals when cart quantity is updated from the cart page (fix useEffect to read quantity of object)

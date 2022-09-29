@@ -1,52 +1,54 @@
 import React from 'react'
 import './Cart.css'
-import { useContext } from 'react';
+import { useContext, useState, useEffect} from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
-  // total cost state for each item
-  //const [totalCost, setTotalCost] = useState([]);
+  
   //total for the whole order
-  //const [subtotal, setSubtotal] = useState(0)
+  const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
   //get cart data
   const cartValues = useContext(cartContext);
-  //console.log(quantity)
-  //const itemTotals = cartValues.forEach(item => item.quantity * item.price)
-
-  // Update subtotal
-  // useEffect(() => {
-  //   for (let item of cartValues) {
-  //     const totalItemCost = item.quantity * item.price
-      
-  //     setTotalCost((previousState) => [...previousState, totalItemCost]);
-  //   }
-  //   if (!totalCost) return;
-  //   const newTotal = [...totalCost];
-  //   const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue)
-  //   setSubtotal(newSubtotal);
-  // }, [totalCost, cartValues])
-
-
-  // const itemTotals = (event) => {
-  //   console.log(event.target.value)
-  //   for (let item of cartValues) {
-  //     const totalItemCost = event.target.value * item.price
-      
-  //     setTotalCost((previousState) => [...previousState, totalItemCost]);
-  //   }
-  //   if (!totalCost) return;
-  //   const newTotal = [...totalCost];
-  //   const newSubtotal = newTotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-  //   setSubtotal(newSubtotal);
-  //   //console.log(subtotal)
-  // }
   
-  // const handleUserQuantityEvent = (e) => {
-  //   props.handleCartQuantity(e)
-    
-  // }
+  useEffect(() => {
+    //calculate subtotal, estimated tax, and estimated total
+    const subtotals = () => {
+    if (cartValues.length === 0) return;
+    const newCart = [...cartValues];
+    const eachSubtotal = [];
+    for (let item of newCart) {
+      eachSubtotal.push(item.totalCost)
+    }
+    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    const tax = newSubtotal * .07;
+    const estimatedTotal = newSubtotal + tax;
+    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
+    }
+    subtotals();
+  }, [cartValues])
+  //removes item from cart
+  const removeItem = (itemId) => {
+    const newTotal = [...cartValues];
+    const removedItem = newTotal.filter((item) => item.id !== itemId)
+    props.setCart(removedItem)
+  }
   
-  
+
+  //onChange can only take one argument ie (event) => handleQuantityChange(event)
+  //need to get the item id I want to update quantity for
+  //need to take the event value and pass it in and update quantity
+  const compareItemId = (itemId, event) => {
+    const newCart = [...cartValues];
+    const newState = newCart.map(item => {
+      if (item.id === itemId) {
+        return {...item, quantity: event.target.value}
+      }
+      return item;
+    })
+    props.setCart(newState)
+
+  }
+
 
   return (
     <div className='cart-container'>
@@ -61,8 +63,19 @@ export default function Cart(props) {
             <div className='quantity-container'>
               <p>Quantity</p>
               <div className='close-container'>
-                <input className='item-quantity' value={items.quantity} onChange={() => console.log('test')}></input>
-                <button className='close-button' onClick={() => props.removeItem(items.id)}>&times;</button>
+                <select className='item-quantity' onChange={(event) => compareItemId(items.id, event)} value={items.quantity}>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
+                </select>
+                <button className='close-button' onClick={() => removeItem(items.id)}>&times;</button>
               </div>
             </div>
             <div className='total-container'>
@@ -77,13 +90,13 @@ export default function Cart(props) {
         <h2 className='order-summary'>Order Summary</h2>
         <div className='subtotal-container'>
           <h3>Subtotal:</h3>
-          <h3>{props.subtotal}</h3>
+          <h3>${subtotal.subtotal}</h3>
           <h3>Shipping:</h3>
           <h3>FREE</h3>
           <h3>Estimated Tax:</h3>
-          <h3>.07 * total</h3>
+          <h3>${subtotal.tax}</h3>
           <h3>Estimated Total:</h3>
-          <h3>TOTAL</h3>
+          <h3>${subtotal.estimatedTotal}</h3>
           <button className='checkout-button'>CHECKOUT</button>
         </div>
       </div>}
