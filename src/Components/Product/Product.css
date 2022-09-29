@@ -3,8 +3,8 @@
 }
 .product-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-    grid-template-rows: repeat(5, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
     align-items: center;
     margin: 1rem;
