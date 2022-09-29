@@ -83,3 +83,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 10. general code cleanup
 11. Limit the number of items a user can add.
 12. Update subtotals when cart quantity is updated from the cart page (fix useEffect to read quantity of object)
+13. Allow users to update quantity by typing
