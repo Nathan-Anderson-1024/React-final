@@ -20,14 +20,7 @@ export default function Cart(props) {
     const removedItem = newTotal.filter((item) => item.id !== itemId)
     props.setCart(removedItem)
   }
-  //handle quantity change
-  const handleQuantityChange = (event) => {
-    const newCart = [...cartValues]
-    console.log(event.target)
-    console.log(newCart)
-    return event.target.value
-    
-  }
+  
 
   //onChange can only take one argument ie (event) => handleQuantityChange(event)
   //need to get the item id I want to update quantity for
@@ -36,7 +29,7 @@ export default function Cart(props) {
     const newCart = [...cartValues];
     const newState = newCart.map(item => {
       if (item.id === itemId) {
-        return {...item, quantity: handleQuantityChange(event)}
+        return {...item, quantity: event.target.value}
       }
       return item;
     })
@@ -44,16 +37,6 @@ export default function Cart(props) {
 
   }
 
-  const updateQuantity = (itemId) => {
-    const newCart = [...cartValues]
-    const newState = newCart.map(item => {
-      if (item.id === itemId) {
-        return {...item, quantity: item.quantity + props.quantity, totalCost: item.totalCost + props.quantity * item.price}
-      }
-      return item;
-    })
-    props.setCart(newState)
-  }
 
 
 
