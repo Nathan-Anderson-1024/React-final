@@ -37,6 +37,12 @@
     color: black;
     background-color: radial-gradient(circle, rgba(248,249,250,1) 0%, rgba(255,255,255,1) 100%);
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.link {
+    text-decoration: none;
+    color: black;
 }
 .item-link:hover {
     background-color: rgba(128, 128, 128, 0.25);
