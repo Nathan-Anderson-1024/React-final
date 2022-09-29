@@ -82,4 +82,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 9. Context API cleanup
 10. general code cleanup
 11. Limit the number of items a user can add.
-12. Update subtotals when cart quantity is updated from the cart page
+12. Update subtotals when cart quantity is updated from the cart page (fix useEffect to read quantity of object)

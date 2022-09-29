@@ -31,7 +31,13 @@ function App() {
   const handleUserQuantity = (event) => {
     if (Number(event.target.value < 1) || event.target.value.includes('-')) {
       setQuantity(1)
-    } else {
+    } 
+    else if (Number(event.target.value > 100)) {
+      alert('You cannot purchase more than 100 of each item.')
+      setQuantity(100)
+    }
+    
+    else {
       setQuantity(Number(event.target.value))
     }
     

@@ -4,7 +4,6 @@ import { useContext, useState, useEffect} from 'react';
 import { cartContext } from '../App/App';
 
 export default function Cart(props) {
-  const product = props.product;
   
   //total for the whole order
   const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
@@ -12,6 +11,19 @@ export default function Cart(props) {
   const cartValues = useContext(cartContext);
   
   useEffect(() => {
+    //calculate subtotal, estimated tax, and estimated total
+    const subtotals = () => {
+    if (cartValues.length === 0) return;
+    const newCart = [...cartValues];
+    const eachSubtotal = [];
+    for (let item of newCart) {
+      eachSubtotal.push(item.totalCost)
+    }
+    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    const tax = newSubtotal * .07;
+    const estimatedTotal = newSubtotal + tax;
+    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
+    }
     subtotals();
   }, [cartValues])
   //removes item from cart
@@ -37,31 +49,6 @@ export default function Cart(props) {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-  //calculate subtotal, estimated tax, and estimated total
-  const subtotals = () => {
-    if (cartValues.length === 0) return;
-    const newCart = [...cartValues];
-    const eachSubtotal = [];
-    for (let item of newCart) {
-      eachSubtotal.push(item.totalCost)
-    }
-    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-    const tax = newSubtotal * .07;
-    const estimatedTotal = newSubtotal + tax;
-    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
-  }
-  
-  
 
   return (
     <div className='cart-container'>
