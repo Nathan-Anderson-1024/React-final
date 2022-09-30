@@ -10,11 +10,7 @@ export default function ProductDetail(props) {
   const indexLocation = id - 1;
   
 
-  const { addQuantity, removeQuantity, quantity, products, addCartItem } = useCart();
-  const handleUserQuantityEvent = (e) => {
-    props.handleUserQuantity(e)
-    
-  }
+  const { addQuantity, removeQuantity, quantity, products, addCartItem, handleUserQuantity } = useCart();
   
 
   
@@ -30,7 +26,7 @@ export default function ProductDetail(props) {
           <h3 className="price">${products[indexLocation].price.toFixed(2)}</h3>
           <div className="quantity">
             <h3 className="quantity-title">Quantity:</h3>
-            <input className="quantity-input" value={quantity} onChange={handleUserQuantityEvent}></input>
+            <input className="quantity-input" value={quantity} onChange={(event) => handleUserQuantity(event)}></input>
             <div className="buttons">
               <button onClick={() => addQuantity()}>+</button>
               <button onClick={() => removeQuantity()}>-</button>
