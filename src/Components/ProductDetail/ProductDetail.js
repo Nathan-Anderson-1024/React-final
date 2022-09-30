@@ -46,6 +46,7 @@ export default function ProductDetail(props) {
     }
     localStorage.setItem(`cart`, JSON.stringify(cart))
   }
+
   
   return (
     <>
