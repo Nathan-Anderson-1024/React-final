@@ -59,6 +59,8 @@ export function CartProvider({ children }) {
 
 
 
+
+
   const addQuantity = () => {
     setQuantity((previousQuantity) => previousQuantity + 1);
   }
@@ -75,6 +77,37 @@ export function CartProvider({ children }) {
     const json = await response.json()
     return json
   }
+  const addCartItem = (itemId) => {
+      //checks to see if item in cart, if not add it
+      const newCart = [...cart];
+      const result = newCart.find((product) => product.id === itemId);
+      if (result === undefined) {
+        console.log(products)
+        const updatedValue = {
+          item: products[itemId - 1].title,
+          quantity: quantity,
+          img: products[itemId - 1].image,
+          price: products[itemId - 1].price,
+          totalCost: products[itemId - 1].price * quantity,
+          id: products[itemId - 1].id
+        }
+        setCart((prevState) => {
+        return [...prevState, updatedValue]
+        })
+      }
+      //if item already in cart add selected number to the already existing number 
+      else {
+        const newState = newCart.map(item => {
+          if (item.id === itemId) {
+            return {...item, quantity: item.quantity + quantity, totalCost: item.totalCost + quantity * item.price}
+          }
+          return item;
+        })
+        setCart(newState)
+      }
+      localStorage.setItem(`cart`, JSON.stringify(cart))
+    }
+
   //gets data from api
   useEffect(() => {
     getData().then(
@@ -98,6 +131,7 @@ export function CartProvider({ children }) {
     setQuantity, 
     addQuantity,  
     removeQuantity,
+    addCartItem,
     quantity, 
     products, 
     cart }}>
