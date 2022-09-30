@@ -79,8 +79,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 6. filtering by category
 7. filtering by search term
 8. order by price (high to low / low to high)
-9. Context API cleanup
-10. general code cleanup
-11. Limit the number of items a user can add.
+9. ~~Context API cleanup~~
+10. ~~general code cleanup~~
+11. ~~Limit the number of items a user can add.~~
 12. ~~Update subtotals when cart quantity is updated from the cart page (fix useEffect to read quantity of object)~~
-13. Allow users to update quantity by typing
+13. ~~Allow users to update quantity by typing~~
+14. Add a checkout page
+15. display name price and quantity of all items in the cart
+16. display total cost of the cart
+17. display a checkout form with inputs for name address billing address credit card info submit button
+18. Clear the cart when submitting
