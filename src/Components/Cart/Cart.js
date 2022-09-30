@@ -80,7 +80,6 @@ export default function Cart() {
               <p>Total</p>
               <NumericFormat value={items.price} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
             </div>
-            
           </div>
         )
       })}
