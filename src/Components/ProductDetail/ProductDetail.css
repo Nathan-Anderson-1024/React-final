@@ -14,7 +14,7 @@ body {
     height: 90vh;
 }
 .img-left {
-    height: 50vh;
+    display: flex;
     max-width: 25vw;
     mix-blend-mode: multiply;
     margin-right: 2rem;
@@ -55,4 +55,29 @@ body {
 .add-cart {
     cursor: pointer;
     padding: 1rem;
+}
+@media only screen and (min-width: 300px) and (max-width: 1700px) {
+    .individual-product-container {
+        flex-direction: column;
+        margin-top: 15rem;
+        padding-bottom: 15rem;
+    }
+    .img-left img {
+        object-fit: cover;
+        max-width: 150px;
+        margin-bottom: 2rem;
+    }
+    .product-info-right {
+        max-width: 50vw;
+        max-height: 80vh;
+    }
+    .category, .title, .quantity-title, .description {
+        font-size: 1.25rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .add-cart {
+        padding: 0.25rem
+    }
 }
