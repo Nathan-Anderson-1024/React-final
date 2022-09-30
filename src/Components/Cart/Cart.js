@@ -78,9 +78,8 @@ export default function Cart() {
             </div>
             <div className='total-container'>
               <p>Total</p>
-              <NumericFormat value={items.price} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+              <NumericFormat value={items.totalCost} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
             </div>
-            
           </div>
         )
       })}

@@ -10,64 +10,67 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const getQuantity = (id) => {
-    return cart.find(item => {
-        if (item.id === id) return item.quantity;
-        return 0
-    })
-  }
-
-  const increaseQuantity = (id) => {
-    setCart(currentCart => {
-       if (currentCart.find(item => item.id === id) == null) {
-        return [...currentCart, {id, quantity: 1}]
-       } else {
-        return currentCart.map(item => {
-            if(item.id === id) {
-                return {...item, quantity: item.quantity + 1}
-            } else {
-                return item
-            }
-        })
-       }
-    })
-  }
-
-  const decreaseQuantity = (id) => {
-    setCart(currentCart => {
-       if (currentCart.find(item => item.id === id)?.quantity === 1) {
-        return currentCart.filter(item => item.id !== id)
-       } else {
-        return currentCart.map(item => {
-            if(item.id === id) {
-                return {...item, quantity: item.quantity - 1}
-            } else {
-                return item
-            }
-        })
-       }
-    })
-  }
-
-  const removeItem = (id) => {
-    setCart(currentCart => {
-        return currentCart.filter(item => item.id !== id)
-    })
-  }
 
 
+  
 
 
 
   const addQuantity = () => {
     setQuantity((previousQuantity) => previousQuantity + 1);
   }
-
-
   const removeQuantity = () => {
     const quantityValue = quantity;
     if (quantityValue <= 1) return;
     setQuantity((previousQuantity) => previousQuantity - 1);
+  }
+  const removeItem = (id) => {
+    setCart(currentCart => {
+        return currentCart.filter(item => item.id !== id)
+    })
+  }
+  const addCartItem = (itemId) => {
+    //checks to see if item in cart, if not add it
+    const newCart = [...cart];
+    const result = newCart.find((product) => product.id === itemId);
+    if (result === undefined) {
+      const updatedValue = {
+        item: products[itemId - 1].title,
+        quantity: quantity,
+        img: products[itemId - 1].image,
+        price: products[itemId - 1].price,
+        totalCost: products[itemId - 1].price * quantity,
+        id: products[itemId - 1].id
+      }
+      setCart((prevState) => {
+      return [...prevState, updatedValue]
+      })
+    }
+    //if item already in cart add selected number to the already existing number 
+    else {
+      const newState = newCart.map(item => {
+        if (item.id === itemId) {
+          return {...item, quantity: item.quantity + quantity, totalCost: item.totalCost + quantity * item.price}
+        }
+        return item;
+      })
+      setCart(newState)
+    }
+    localStorage.setItem(`cart`, JSON.stringify(cart))
+  }
+  const handleUserQuantity = (event) => {
+    if (Number(event.target.value < 1) || event.target.value.includes('-')) {
+      setQuantity(1)
+    } 
+    else if (Number(event.target.value > 100)) {
+      alert('You cannot purchase more than 100 of each item.')
+      setQuantity(100)
+    }
+    
+    else {
+      setQuantity(Number(event.target.value))
+    }
+    
   }
 
   const getData = async () => {
@@ -75,6 +78,8 @@ export function CartProvider({ children }) {
     const json = await response.json()
     return json
   }
+  
+
   //gets data from api
   useEffect(() => {
     getData().then(
@@ -89,18 +94,16 @@ export function CartProvider({ children }) {
   
 
   return (
-    <CartContext.Provider value={{ getQuantity, 
-    increaseQuantity, 
-    decreaseQuantity, 
-    removeItem, 
-    setProducts, 
+    <CartContext.Provider value={{ removeItem, setProducts, 
     setCart, 
     setQuantity, 
-    addQuantity,  
+    addQuantity,
+    handleUserQuantity,  
     removeQuantity,
+    addCartItem,
     quantity, 
     products, 
-    cart }}>
+    cart}}>
         {children}
     </CartContext.Provider>
   )

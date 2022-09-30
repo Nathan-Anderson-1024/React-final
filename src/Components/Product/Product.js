@@ -2,7 +2,14 @@ import React from 'react'
 import './Product.css'
 import { Link } from 'react-router-dom'
 import { NumericFormat } from 'react-number-format'
+import { useCart } from '../../Context/CartContext'
+
 export default function Product({product}) {
+  const { addCartItem } = useCart();
+
+
+
+
   return (
     <div className='item-link'>
       <Link to={`/product/${product.id}`} className='link'>
@@ -13,7 +20,7 @@ export default function Product({product}) {
           <NumericFormat className='product-price' value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
         </div>
       </Link>
-      <button className='add-button'>Add to Cart</button>
+      <button className='add-button' onClick={() => addCartItem(product.id)}>Add to Cart</button>
     </div>
     
   )
