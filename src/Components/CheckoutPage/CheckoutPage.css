@@ -20,6 +20,9 @@
     background-color: teal;
     color: white;
 }
+.required {
+    color: red;
+}
 /* ContactInfo.js */
 .form-info {
     display: flex;

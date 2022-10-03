@@ -6,13 +6,14 @@ import ContactInfo from '../ContactInfo/ContactInfo';
 import ShippingInfo from '../ShippingInfo/ShippingInfo';
 import BillingInfo from '../BillingInfo/BillingInfo';
 import PaymentInfo from '../PaymentInfo/PaymentInfo';
+import { Link } from 'react-router-dom';
 
 export default function CheckoutPage() {
     //display name price and quantity of each item
     //display total cost of the cart
     //display checkout form
     //submitting the order should clear the cart and return back to main products page.
-    const {cart} = useCart();
+    const {cart, setCart} = useCart();
   return (
     <div className='checkout-container'>
         <div className='checkout-form'>
@@ -21,7 +22,10 @@ export default function CheckoutPage() {
             <BillingInfo />
             <PaymentInfo />
             <div className='checkout-submit-btn'>
-                <button>Submit Order!</button>
+                <Link to='/'>
+                    <button onClick={() => setCart([])}>Submit Order!</button>
+                </Link>
+                
             </div>
         </div>
         <div>

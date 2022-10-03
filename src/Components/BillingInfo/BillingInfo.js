@@ -7,17 +7,17 @@ export default function BillingInfo() {
       <form>
         <div className="name-container">
           <div className="form-info">
-            <label for="f-name-billing">* First Name</label>
+            <label for="f-name-billing"><span className="required">*</span> First Name</label>
             <input id="f-name-billing" required></input>
           </div>
           <div className="form-info">
-            <label for="l-name-billing">* Last Name</label>
+            <label for="l-name-billing"><span className="required">*</span> Last Name</label>
             <input id="l-name-billing" required></input>
           </div>
         </div>
         <div className="name-container">
           <div className="form-info">
-            <label for="address-1-billing">* Address 1</label>
+            <label for="address-1-billing"><span className="required">*</span> Address 1</label>
             <input id="address-1-billing" required></input>
           </div>
           <div className="form-info">
@@ -27,15 +27,15 @@ export default function BillingInfo() {
         </div>
         <div className="name-container">
           <div className="form-info">
-            <label for="city-billing">* City</label>
+            <label for="city-billing"><span className="required">*</span> City</label>
             <input id="city-billing" required></input>
           </div>
           <div className="form-info">
-            <label for="state-billing">* State</label>
+            <label for="state-billing"><span className="required">*</span> State</label>
             <input id="state-billing" required></input>
           </div>
           <div className="form-info">
-            <label for="zip-billing">* ZIP Code</label>
+            <label for="zip-billing"><span className="required">*</span> ZIP Code</label>
             <input id="zip-billing" required></input>
           </div>
         </div>

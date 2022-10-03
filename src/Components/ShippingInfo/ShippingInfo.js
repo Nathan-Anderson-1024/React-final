@@ -7,17 +7,17 @@ export default function ShippingInfo() {
       <form className="checkout-shipping-form">
         <div className="name-container">
             <div className="form-info">
-                <label for="f-name">* First Name</label>
+                <label for="f-name"><span className="required">*</span> First Name</label>
                 <input id="f-name" required></input>
             </div>
             <div className="form-info">
-                <label for="l-name">* Last Name</label>
+                <label for="l-name"><span className="required">*</span> Last Name</label>
                 <input id="l-name" required></input>
             </div>
         </div>
         <div className="name-container">
             <div className="form-info">
-                <label for="address-1">* Address 1</label>
+                <label for="address-1"><span className="required">*</span> Address 1</label>
                 <input id="address-1" required></input>
             </div>
             <div className="form-info">
@@ -27,15 +27,15 @@ export default function ShippingInfo() {
         </div>
         <div className="name-container">
             <div className="form-info">
-                <label for="city">* City</label>
+                <label for="city"><span className="required">*</span> City</label>
                 <input id="city" required></input>
             </div>
             <div className="form-info">
-                <label for="state">* State</label>
+                <label for="state"><span className="required">*</span> State</label>
                 <input id="state" required></input>
             </div>
             <div className="form-info">
-                <label for="zip">* ZIP Code</label>
+                <label for="zip"><span className="required">*</span> ZIP Code</label>
                 <input id="zip" required></input>
             </div>
         </div>
