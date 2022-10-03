@@ -5,6 +5,7 @@ import Cart from '../Cart/Cart';
 import ProductDetail from '../ProductDetail/ProductDetail';
 import ProductList from '../ProductList/ProductList';
 import { CartProvider } from '../../Context/CartContext';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<ProductList />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/cart/checkout' element={<CheckoutPage />} />
         </Routes>
       </CartProvider>
       </div>

@@ -3,7 +3,7 @@ import './Cart.css'
 import { useState, useEffect} from 'react';
 import { useCart } from '../../Context/CartContext';
 import { NumericFormat } from 'react-number-format'
-
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
   
@@ -106,7 +106,9 @@ export default function Cart() {
             thousandSeparator={true} prefix={'$'} 
             decimalScale={2} fixedDecimalScale={true} />
           </h3>
-          <button className='checkout-button'>CHECKOUT</button>
+          <Link to='/cart/checkout' className='checkout-button-container'>
+            <button className='checkout-button'>CHECKOUT</button>
+          </Link>
         </div>
       </div>}
       {cart.length === 0 && <h2 className='order-summary'>Your Cart is Empty.</h2>}
