@@ -8,26 +8,28 @@ import { Link } from 'react-router-dom';
 export default function Cart() {
   
   //total for the whole order
-  const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
+  //const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
   //get cart data
-  const {removeItem, setCart, cart} = useCart();
+  const {removeItem, setCart, cart, calcSubtotals, subtotal} = useCart();
   
   useEffect(() => {
     //calculate subtotal, estimated tax, and estimated total
-    const subtotals = () => {
-    if (cart.length === 0) return;
-    const newCart = [...cart];
-    const eachSubtotal = [];
-    for (let item of newCart) {
-      eachSubtotal.push(item.totalCost)
-    }
-    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-    const tax = newSubtotal * .07;
-    const estimatedTotal = newSubtotal + tax;
-    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
-    }
+    // const subtotals = () => {
+    // if (cart.length === 0) return;
+    // const newCart = [...cart];
+    // const eachSubtotal = [];
+    // for (let item of newCart) {
+    //   eachSubtotal.push(item.totalCost)
+    // }
+    // const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    // const tax = newSubtotal * .07;
+    // const estimatedTotal = newSubtotal + tax;
+    // setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
+    // }
     
-    subtotals();
+    //subtotals();
+
+    calcSubtotals();
   }, [cart])
   
   

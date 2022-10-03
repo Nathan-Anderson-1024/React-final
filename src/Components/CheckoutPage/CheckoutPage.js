@@ -13,7 +13,7 @@ export default function CheckoutPage() {
     //display total cost of the cart
     //display checkout form
     //submitting the order should clear the cart and return back to main products page.
-    const {cart, setCart} = useCart();
+    const {cart, setCart, subtotal} = useCart();
   return (
     <div className='checkout-container'>
         <div className='checkout-form'>
@@ -32,22 +32,36 @@ export default function CheckoutPage() {
             <div className='checkout-right'>
                 <div className='checkout-subtotal'>
                     <h1>Order Summary</h1>
-                    <p>Subtotal</p>
-                    <p>Shipping</p>
-                    <p>Shipping Discount</p>
-                    <p>Tax:</p>
-                    <p>Order Total:</p>
+                    <div className='checkout-flex'>
+                        <p className='bold'>Subtotal:</p>
+                        <NumericFormat value={`Subtotal: ${subtotal.subtotal}`} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+                    </div>
+                    <div className='checkout-flex'>
+                        <p className='bold'>Shipping:</p>
+                        <p>FREE</p>
+                    </div>
+                    <div className='checkout-flex'>
+                        <p className='bold'>Tax:</p>
+                        <NumericFormat value={`Subtotal: ${subtotal.tax}`} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+                    </div>
+                    <div className='checkout-flex'>
+                        <p className='bold'>Order Total:</p>
+                        <NumericFormat value={`Subtotal: ${subtotal.estimatedTotal}`} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+                    </div>
+                    
                 </div>
                 <div className='checkout-cart'>
                     <h1>Shopping Bag</h1>
                     {cart.map((items) => {
                         return (
-                            <div key={items.id}>
-                                <p>{items.item}</p>
+                            <div key={items.id} className='checkout-item-wrapper'>
+                                <p className='bold'>{items.item}</p>
                                 <div className='checkout-item-info'>
                                     <img src={items.img} style={{height: '150px'}} alt={items.item}></img>
-                                    <p>Quantity: {items.quantity}</p>
-                                    <NumericFormat value={items.totalCost} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+                                    <p><span className='bold'>Quantity:</span> {items.quantity}</p>
+                                    <span className='bold'>
+                                        <NumericFormat value={items.totalCost} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
+                                    </span>
                                 </div>
                             </div>
                         )

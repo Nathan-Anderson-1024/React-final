@@ -23,6 +23,25 @@
 .required {
     color: red;
 }
+.checkout-flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.bold {
+    font-weight: bold;
+}
+.checkout-cart img {
+    mix-blend-mode: multiply;
+}
+.checkout-item-wrapper {
+    border-bottom: 2px solid #C4BFC1;
+    width: 25vw;
+}
+.checkout-subtotal {
+    border-bottom: 2px solid #C4BFC1;
+    width: 25vw;
+}
 /* ContactInfo.js */
 .form-info {
     display: flex;
