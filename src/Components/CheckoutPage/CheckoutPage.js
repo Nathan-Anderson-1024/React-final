@@ -19,7 +19,8 @@ export default function CheckoutPage() {
   const timerRef = useRef(null);
   const navigate = useNavigate();
   
-  const awaitModal = () => {
+  const awaitModal = (event) => {
+    event.preventDefault();
     setShow(true)
     timerRef.current = setTimeout(() => {
         setShow(false);
@@ -39,14 +40,16 @@ export default function CheckoutPage() {
   return (
     <div className='checkout-container'>
         <div className='checkout-form'>
-            <ContactInfo />
-            <ShippingInfo />
-            <BillingInfo />
-            <PaymentInfo />
+            <form onSubmit={(event) => awaitModal(event)}>
+                <ContactInfo />
+                <ShippingInfo />
+                <BillingInfo />
+                <PaymentInfo />
+                <div className='checkout-submit-btn'>
+                    <button type='submit'>Submit Order!</button>
+                </div>
+            </form>
             <CheckoutModal show={show} onClose={() => setShow(false)} />
-            <div className='checkout-submit-btn'>
-                <button onClick={() => awaitModal()}>Submit Order!</button>
-            </div>
         </div>
         <div>
             <div className='checkout-right'>

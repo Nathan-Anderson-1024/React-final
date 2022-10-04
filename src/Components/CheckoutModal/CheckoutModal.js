@@ -1,7 +1,7 @@
 import React from 'react'
 import './CheckoutModal.css'
 import {ReactComponent as Logo} from './loading.svg'
-export default function CheckoutModal({ show, setShow, onClose}) {
+export default function CheckoutModal({ show, onClose}) {
 
   if (!show) {
     return null;
