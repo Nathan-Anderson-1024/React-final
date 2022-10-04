@@ -1,4 +1,3 @@
-import React from 'react'
 import Product from '../Product/Product'
 import { useCart } from '../../Context/CartContext';
 
@@ -9,8 +8,6 @@ export default function ProductList() {
       {products.map((product) => {
         return <Product key={product.id} product={product}  />
       })}
-      
-        
     </div>
     
   )

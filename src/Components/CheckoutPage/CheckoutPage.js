@@ -25,7 +25,6 @@ export default function CheckoutPage() {
                 <Link to='/'>
                     <button onClick={() => setCart([])}>Submit Order!</button>
                 </Link>
-                
             </div>
         </div>
         <div>

@@ -12,7 +12,7 @@ export default function Product({product}) {
 
   return (
     <div className='item-link'>
-      <Link to={`/product/${product.id}`} className='link'>
+      <Link to={`/products/${product.id}`} className='link'>
         <div className='product-wrapper'>
           <img src={product.image} alt={product.description} className='product-img'></img>
           <h4 className='product-name'>{product.title}</h4>

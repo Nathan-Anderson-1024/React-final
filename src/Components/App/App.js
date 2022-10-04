@@ -18,8 +18,8 @@ function App() {
         <Routes>
           <Route path='/' element={<ProductList />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/product/:id' element={<ProductDetail />} />
-          <Route path='/cart/checkout' element={<CheckoutPage />} />
+          <Route path='/products/:id' element={<ProductDetail />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
         </Routes>
       </CartProvider>
       </div>
