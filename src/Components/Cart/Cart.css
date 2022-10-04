@@ -98,8 +98,12 @@ body {
     grid-template-rows: repeat(5, 1fr);
 }
 /* Checkout button */
-.checkout-button {
+.checkout-button-container {
     grid-column: 1 / -1;
+}
+.checkout-button {
+    width: 100%;
+    height: 4rem;
     cursor: pointer;
 }
 @media only screen and (min-width: 300px) and (max-width: 589px) {

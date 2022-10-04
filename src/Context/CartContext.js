@@ -10,8 +10,21 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
 
 
+  const calcSubtotals = () => {
+    if (cart.length === 0) return;
+    const newCart = [...cart];
+    const eachSubtotal = [];
+    for (let item of newCart) {
+      eachSubtotal.push(item.totalCost)
+    }
+    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    const tax = newSubtotal * .07;
+    const estimatedTotal = newSubtotal + tax;
+    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
+    }
   
 
 
@@ -101,6 +114,9 @@ export function CartProvider({ children }) {
     handleUserQuantity,  
     removeQuantity,
     addCartItem,
+    calcSubtotals,
+    setSubtotal,
+    subtotal,
     quantity, 
     products, 
     cart}}>

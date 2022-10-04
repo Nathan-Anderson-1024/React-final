@@ -84,8 +84,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 11. ~~Limit the number of items a user can add.~~
 12. ~~Update subtotals when cart quantity is updated from the cart page (fix useEffect to read quantity of object)~~
 13. ~~Allow users to update quantity by typing~~
-14. Add a checkout page
-15. display name price and quantity of all items in the cart
-16. display total cost of the cart
-17. display a checkout form with inputs for name address billing address credit card info submit button
-18. Clear the cart when submitting
+14. ~~Add a checkout page~~
+15. ~~display name price and quantity of all items in the cart~~
+16. ~~display total cost of the cart~~
+17. ~~display a checkout form with inputs for name address billing address credit card info submit button~~
+18. ~~Clear the cart when submitting~~
+19. ~~Add a modal when user hits submit button!~~
+20. Add a search ability on product page
+21. ~~Make sure form wont submit unless all the required fields are added.~~

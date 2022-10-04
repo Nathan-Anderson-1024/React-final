@@ -1,33 +1,18 @@
 import React from 'react'
 import './Cart.css'
-import { useState, useEffect} from 'react';
+import { useEffect } from 'react';
 import { useCart } from '../../Context/CartContext';
 import { NumericFormat } from 'react-number-format'
-
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
-  
-  //total for the whole order
-  const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
   //get cart data
-  const {removeItem, setCart, cart} = useCart();
+  const {removeItem, setCart, cart, calcSubtotals, subtotal} = useCart();
   
   useEffect(() => {
-    //calculate subtotal, estimated tax, and estimated total
-    const subtotals = () => {
-    if (cart.length === 0) return;
-    const newCart = [...cart];
-    const eachSubtotal = [];
-    for (let item of newCart) {
-      eachSubtotal.push(item.totalCost)
-    }
-    const newSubtotal = eachSubtotal.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-    const tax = newSubtotal * .07;
-    const estimatedTotal = newSubtotal + tax;
-    setSubtotal({subtotal: newSubtotal.toFixed(2), tax: tax.toFixed(2), estimatedTotal: estimatedTotal.toFixed(2)});
-    }
-    
-    subtotals();
+    console.log('test')
+    calcSubtotals();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart])
   
   
@@ -106,7 +91,9 @@ export default function Cart() {
             thousandSeparator={true} prefix={'$'} 
             decimalScale={2} fixedDecimalScale={true} />
           </h3>
-          <button className='checkout-button'>CHECKOUT</button>
+          <Link to='/checkout' className='checkout-button-container'>
+            <button className='checkout-button'>CHECKOUT</button>
+          </Link>
         </div>
       </div>}
       {cart.length === 0 && <h2 className='order-summary'>Your Cart is Empty.</h2>}
