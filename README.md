@@ -89,6 +89,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 16. ~~display total cost of the cart~~
 17. ~~display a checkout form with inputs for name address billing address credit card info submit button~~
 18. ~~Clear the cart when submitting~~
-19. Add a modal when user hits submit button!
+19. ~~Add a modal when user hits submit button!~~
 20. Add a search ability on product page
-21. Make sure form wont submit unless all the required fields are added.
+21. ~~Make sure form wont submit unless all the required fields are added.~~
