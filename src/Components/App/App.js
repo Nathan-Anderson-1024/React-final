@@ -9,6 +9,8 @@ import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 
 function App() {
+  
+
   //import setQuantity function from context
   return (
     <div className='header'>

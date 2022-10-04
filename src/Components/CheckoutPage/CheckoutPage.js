@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import { useCart } from '../../Context/CartContext'
 import './CheckoutPage.css'
 import { NumericFormat } from 'react-number-format';
@@ -6,14 +6,36 @@ import ContactInfo from '../ContactInfo/ContactInfo';
 import ShippingInfo from '../ShippingInfo/ShippingInfo';
 import BillingInfo from '../BillingInfo/BillingInfo';
 import PaymentInfo from '../PaymentInfo/PaymentInfo';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import CheckoutModal from '../CheckoutModal/CheckoutModal';
 
 export default function CheckoutPage() {
     //display name price and quantity of each item
     //display total cost of the cart
     //display checkout form
     //submitting the order should clear the cart and return back to main products page.
-    const {cart, setCart, subtotal} = useCart();
+  const {cart, setCart, subtotal, setSubtotal} = useCart();
+  const [show, setShow] = useState(false);
+  const timerRef = useRef(null);
+  const navigate = useNavigate();
+  
+  const awaitModal = () => {
+    setShow(true)
+    timerRef.current = setTimeout(() => {
+        setShow(false);
+        setCart([]);
+        setSubtotal({subtotal: null, tax: null, estimatedTotal: null});
+        alert('Order Submitted Successfully!');
+        navigate('/');
+    }, 4000)
+  }
+  useEffect(() => {
+    // Clear the interval when the component unmounts
+    return () => clearTimeout(timerRef.current);
+  }, []);
+
+  
+
   return (
     <div className='checkout-container'>
         <div className='checkout-form'>
@@ -21,10 +43,9 @@ export default function CheckoutPage() {
             <ShippingInfo />
             <BillingInfo />
             <PaymentInfo />
+            <CheckoutModal show={show} onClose={() => setShow(false)} />
             <div className='checkout-submit-btn'>
-                <Link to='/'>
-                    <button onClick={() => setCart([])}>Submit Order!</button>
-                </Link>
+                <button onClick={() => awaitModal()}>Submit Order!</button>
             </div>
         </div>
         <div>
