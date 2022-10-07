@@ -116,6 +116,7 @@ export function CartProvider({ children }) {
     addCartItem,
     calcSubtotals,
     setSubtotal,
+    getData,
     subtotal,
     quantity, 
     products, 

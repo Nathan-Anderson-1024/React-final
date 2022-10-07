@@ -10,7 +10,6 @@ export default function Cart() {
   const {removeItem, setCart, cart, calcSubtotals, subtotal} = useCart();
   
   useEffect(() => {
-    console.log('test')
     calcSubtotals();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart])

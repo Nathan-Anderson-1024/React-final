@@ -2,12 +2,12 @@ import React, {useRef, useState, useEffect} from 'react'
 import { useCart } from '../../Context/CartContext'
 import './CheckoutPage.css'
 import { NumericFormat } from 'react-number-format';
-import ContactInfo from '../ContactInfo/ContactInfo';
-import ShippingInfo from '../ShippingInfo/ShippingInfo';
-import BillingInfo from '../BillingInfo/BillingInfo';
-import PaymentInfo from '../PaymentInfo/PaymentInfo';
+import ContactInfo from '../../Components/ContactInfo/ContactInfo.js'
+import ShippingInfo from '../../Components/ShippingInfo/ShippingInfo.js';
+import BillingInfo from '../../Components/BillingInfo/BillingInfo';
+import PaymentInfo from '../../Components/PaymentInfo/PaymentInfo';
 import { useNavigate } from 'react-router-dom';
-import CheckoutModal from '../CheckoutModal/CheckoutModal';
+import CheckoutModal from '../../Components/CheckoutModal/CheckoutModal';
 
 export default function CheckoutPage() {
     //display name price and quantity of each item
