@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./Home.css";
 import bracelet from "../../imgs/bracelet.jpg";
 import mens from "../../imgs/mens.jpg";
