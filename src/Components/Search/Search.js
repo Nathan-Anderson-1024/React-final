@@ -12,6 +12,7 @@ export default function Search() {
             name: searchInputRef.current.value
         }).toString();
         navigate('/search?' + searchQuery)
+        searchInputRef.current.value = '';
         
     }
 

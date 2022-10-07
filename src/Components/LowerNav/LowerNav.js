@@ -7,7 +7,7 @@ export default function LowerNav() {
       <nav className="navbar-bottom">
         <ul className="nav-ul">
           <li>
-            <NavLink to="/products">All Products</NavLink>
+            <NavLink to="/products" end>All Products</NavLink>
           </li>
           <li>
             <NavLink to="/products/mens">Men's Clothing</NavLink>
