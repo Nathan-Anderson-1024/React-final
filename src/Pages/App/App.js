@@ -10,6 +10,10 @@ import NotFound from '../NotFound/NotFound';
 import Home from '../Home/Home';
 import SearchPage from '../SearchPage/SearchPage';
 import LowerNav from '../../Components/LowerNav/LowerNav';
+import Men from '../Men/Men';
+import Women from '../Women/Women';
+import Accessories from '../Accessories/Accessories';
+import Tech from '../Tech/Tech';
 
 
 function App() {
@@ -25,7 +29,11 @@ function App() {
           <Route path='/search' element={<SearchPage />} />
           <Route path='/products'>
             <Route index element={<ProductList />} />
-            <Route path=':id' element={<ProductDetail />} />
+            <Route exact path=':id' element={<ProductDetail />} />
+            <Route path='mens' element={<Men />}></Route>
+            <Route path='womens' element={<Women />}></Route>
+            <Route path='jewelery' element={<Accessories />}></Route>
+            <Route path='electronics' element={<Tech />}></Route>
           </Route>
           <Route path='/cart' element={<Cart />} />
           {/* <Route path='/products/:id' element={<ProductDetail />} /> */}

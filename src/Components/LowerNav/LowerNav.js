@@ -10,16 +10,16 @@ export default function LowerNav() {
             <NavLink to="/products">All Products</NavLink>
           </li>
           <li>
-            <NavLink to="/search?name=Men">Men</NavLink>
+            <NavLink to="/products/mens">Men's Clothing</NavLink>
           </li>
           <li>
-            <NavLink to="/search?name=Women">Women</NavLink>
+            <NavLink to="/products/womens">Women's Clothing</NavLink>
           </li>
           <li>
-            <NavLink to="/search?name=gold">Accessories</NavLink>
+            <NavLink to="/products/jewelery">Jewelery</NavLink>
           </li>
           <li>
-            <NavLink to="/search?name=ssd">Tech</NavLink>
+            <NavLink to="/products/electronics">Electronics</NavLink>
           </li>
           <li>
             <NavLink to="/cart">Cart</NavLink>
