@@ -2,7 +2,7 @@ import React, {useMemo, useState, useEffect} from 'react'
 import { useLocation } from 'react-router-dom'
 import Product from '../../Components/Product/Product';
 import { useCart } from '../../Context/CartContext'
-
+import './SearchPage.css'
 export default function SearchPage() {
   const { search } = useLocation();
   const { products } = useCart();
@@ -32,7 +32,7 @@ export default function SearchPage() {
     <div>
         <h1>{`Results for "${queryParams.get('name')}"`}</h1>
         <h3>Products that matched your search:</h3>
-        <div>
+        <div className='search-products'>
             { searchResults && searchResults.map((product) => {
                 return (
                   <Product key={product.id} product={product}  />

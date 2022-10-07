@@ -9,12 +9,14 @@ import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import NotFound from '../NotFound/NotFound';
 import Home from '../Home/Home';
 import SearchPage from '../SearchPage/SearchPage';
+import LowerNav from '../../Components/LowerNav/LowerNav';
 
 
 function App() {
   return (
     <div className='header'>
       <NavBar />
+      <LowerNav />
       <div className='App'>
       <CartProvider>
         <Routes>

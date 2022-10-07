@@ -1,0 +1,31 @@
+.navbar-bottom {
+    width: 100%;
+    background-color: teal;
+    box-shadow: 0 0.125rem .25rem rgba(47, 46, 46, 0.75);
+}
+.nav-ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0.5rem;
+}
+.navbar-bottom ul {
+    list-style: none;
+}
+.nav-ul li > *  {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+.nav-ul li {
+    padding: 0.25rem;
+}
+.nav-ul li:hover {
+    background-color: rgb(4, 100, 100);
+    border-radius: 10px;
+}
+.navbar-bottom li .active {
+    background-color: rgb(4, 100, 100);
+    border-radius: 10px;
+    padding: 0.25rem;
+}

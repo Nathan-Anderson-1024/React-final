@@ -7,15 +7,15 @@ export default function NavBar() {
     <nav className='navbar'>
         <NavLink to='/' className='site-title'>Site</NavLink>
         <ul>
-          <li>
+          <li className='search-nav'>
             <Search />
           </li>
-            <li>
-                <NavLink to='/products'>Products</NavLink>
-            </li>
-            <li>
-                <NavLink to='/cart'>Cart</NavLink>
-            </li>
+          {/* <li>
+              <NavLink to='/products'>Products</NavLink>
+          </li>
+          <li>
+            <NavLink to='/cart'>Cart</NavLink>
+          </li> */}
         </ul>
     </nav>
   )

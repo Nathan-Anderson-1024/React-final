@@ -1,0 +1,12 @@
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.search, .search-button {
+    font-size: 1.25rem;
+}
+.search-button {
+    cursor: pointer;
+}
