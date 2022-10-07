@@ -8,3 +8,7 @@
     justify-items: center;
     align-items: center;
 }
+.filter-container {
+    border: 1px solid magenta;
+    grid-column:  1 / -1;
+}

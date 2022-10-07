@@ -101,3 +101,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 28. ~~fix the active links on lower nav~~
 29. ~~fix the nav links to filter the correct page~~
 30. create a component to sort by price
+31. Autofill billing address when clicked
