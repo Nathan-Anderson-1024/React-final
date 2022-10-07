@@ -1,1 +1,37 @@
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border: 1px solid red;
+}
+.home-img-div {
+    border: 1px solid green;
+    width: calc(50% - 1rem); 
+    height: 40vh;
+    display: flex;
+    position: relative;
 
+}
+.home-img-div img {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+.inner-text {
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    color: white;
+    font-size: 32px;
+    transform: translate(0);
+    font-weight: bold;
+    border: 1px solid magenta;
+    background-color: black;
+    text-align: center;
+    width: 100%
+}
+
+.home-img-div:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.50;
+}
