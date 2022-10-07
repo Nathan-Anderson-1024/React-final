@@ -93,3 +93,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 20. Add a search ability on product page
 21. ~~Make sure form wont submit unless all the required fields are added.~~
 22. ~~Add 404 page~~
+23. Figure out what to do with home page
+24. Style Search Bar
