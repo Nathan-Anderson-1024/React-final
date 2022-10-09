@@ -11,7 +11,7 @@ export default function PaymentInfo() {
             <label htmlFor="card-name">
               <span className="required">*</span> Cardholder Name
             </label>
-            <input id="card-name"></input>
+            <input id="card-name" required></input>
           </div>
         </div>
         <div className="name-container">
@@ -19,13 +19,13 @@ export default function PaymentInfo() {
             <label htmlFor="card-number">
               <span className="required">*</span> Credit Card Number
             </label>
-            <input id="card-number"></input>
+            <input id="card-number" required></input>
           </div>
           <div className="form-info">
             <label htmlFor="exp-date">
               <span className="required">*</span> Expiration Date
             </label>
-            <input id="exp-date" placeholder="MM/YY"></input>
+            <input id="exp-date" placeholder="MM/YY" required></input>
           </div>
         </div>
         <div className="name-container">
@@ -33,7 +33,7 @@ export default function PaymentInfo() {
             <label htmlFor="security-code">
               <span className="required">*</span> Security Code
             </label>
-            <input id="security-code"></input>
+            <input id="security-code" required></input>
           </div>
         </div>
       </div>

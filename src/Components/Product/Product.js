@@ -16,7 +16,6 @@ export default function Product({product}) {
         <div className='product-wrapper'>
           <img src={product.image} alt={product.description} className='product-img'></img>
           <h4 className='product-name'>{product.title}</h4>
-          {/* <p className='product-price'>${props.product.price.toFixed(2)}</p> */}
           <NumericFormat className='product-price' value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={2} fixedDecimalScale={true} />
         </div>
       </Link>
