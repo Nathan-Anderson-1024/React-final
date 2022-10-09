@@ -76,8 +76,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 3. ~~fix styling issues with some images in products~~
 4. Add pop up when user adds item to cart
 5. ~~Create Checkout page~~
-6. filtering by category
-7. filtering by search term
+6. ~~filtering by category~~
+7. ~~filtering by search term~~
 8. order by price (high to low / low to high)
 9. ~~Context API cleanup~~
 10. ~~general code cleanup~~
@@ -90,11 +90,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 17. ~~display a checkout form with inputs for name address billing address credit card info submit button~~
 18. ~~Clear the cart when submitting~~
 19. ~~Add a modal when user hits submit button!~~
-20. Add a search ability on product page
+20. ~~Add a search ability on product page~~
 21. ~~Make sure form wont submit unless all the required fields are added.~~
 22. ~~Add 404 page~~
-23. Figure out what to do with home page
-24. Style Search Bar
+23. ~~Figure out what to do with home page~~
+24. ~~Style Search Bar~~
 25. Investigate navigating to individual product page using && while it loads
 26. ~~fix background on main page~~
 27. name the website
@@ -102,3 +102,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 29. ~~fix the nav links to filter the correct page~~
 30. create a component to sort by price
 31. Autofill billing address when clicked
+32. add local storage for cart
