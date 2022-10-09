@@ -20,7 +20,7 @@ export default function Search() {
   return (
     <form onSubmit={onSearchHandler} className='search-form'>
         <input type='text' className='search' ref={searchInputRef}></input>
-        <button type='submit' className='search-button'>Search</button>
+        <button type='submit' className='search-button'>🔎</button>
     </form>
   )
 }

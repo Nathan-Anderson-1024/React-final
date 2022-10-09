@@ -25,11 +25,11 @@ export default function SortProducts() {
   }
   return (
     <form>
-        <label htmlFor='sort-by'>Sort By:</label>
-        <select id='sort-by' name='Default' onChange={sortLowHigh}>
+        <label htmlFor='sort-by'>Sort By: </label>
+        <select id='sort-by' name='Default'>
             <option value='default'>Default</option>
-            <option value='low-high'>Low to High</option>
-            <option value='high-low'>High to Low</option>
+            <option value='low-high' onClick={sortLowHigh}>Low to High</option>
+            <option value='high-low' onClick={sortHighLow}>High to Low</option>
         </select>
     </form>
   )

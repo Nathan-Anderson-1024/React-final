@@ -21,9 +21,9 @@ export default function LowerNav() {
           <li>
             <NavLink to="/products/electronics">Electronics</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/cart">Cart</NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </>

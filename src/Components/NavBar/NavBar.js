@@ -12,10 +12,12 @@ export default function NavBar() {
           </li>
           {/* <li>
               <NavLink to='/products'>Products</NavLink>
-          </li>
-          <li>
-            <NavLink to='/cart'>Cart</NavLink>
           </li> */}
+          <li>
+            <NavLink to='/cart'>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </NavLink>
+          </li>
         </ul>
     </nav>
   )
