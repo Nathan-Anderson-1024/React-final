@@ -16,6 +16,16 @@ export default function CheckoutPage() {
     //submitting the order should clear the cart and return back to main products page.
   const {cart, setCart, subtotal, setSubtotal} = useCart();
   const [show, setShow] = useState(false);
+  const [shipping, setShipping] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    sameBilling: false
+  });
   const timerRef = useRef(null);
   const navigate = useNavigate();
   
@@ -42,8 +52,8 @@ export default function CheckoutPage() {
         <div className='checkout-form'>
             <form onSubmit={(event) => awaitModal(event)}>
                 <ContactInfo />
-                <ShippingInfo />
-                <BillingInfo />
+                <ShippingInfo setShipping={setShipping} shipping={shipping} />
+                <BillingInfo shipping={shipping} />
                 <PaymentInfo />
                 <div className='checkout-submit-btn'>
                     <button type='submit'>Submit Order!</button>
