@@ -15,7 +15,7 @@ export default function NavBar() {
           </li> */}
           <li>
             <NavLink to='/cart'>
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i className="fa-solid fa-cart-shopping"></i>
             </NavLink>
           </li>
         </ul>

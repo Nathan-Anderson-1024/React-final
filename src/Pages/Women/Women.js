@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../Context/CartContext";
 import Product from "../../Components/Product/Product";
-
+import SortProducts from "../../Components/SortProducts/SortProducts";
 export default function Women() {
   const { products } = useCart();
   const [searchResults, setSearchResults] = useState();
@@ -16,7 +16,10 @@ export default function Women() {
   }, [products]);
   return (
     <div>
-      <div className="search-products">
+      <div className="filter-container">
+        <SortProducts products={products} />
+      </div>
+      <div className="product-container">
         {searchResults &&
           searchResults.map((product) => {
             return <Product key={product.id} product={product} />;
