@@ -74,7 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 1. ~~Enable quantity change in cart~~
 2. ~~count subtotal and total in cart~~
 3. ~~fix styling issues with some images in products~~
-4. Add pop up when user adds item to cart
+4. ~~Add pop up when user adds item to cart~~
 5. ~~Create Checkout page~~
 6. ~~filtering by category~~
 7. ~~filtering by search term~~
@@ -101,5 +101,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 28. ~~fix the active links on lower nav~~
 29. ~~fix the nav links to filter the correct page~~
 30. ~~create a component to sort by price~~
-31. Autofill billing address when clicked
+31. ~~Autofill billing address when clicked~~
 32. add local storage for cart
+33. think about how to store billing and shipping info when submitting

@@ -45,6 +45,7 @@ export default function CheckoutPage() {
         setShow(false);
         setCart([]);
         setSubtotal({subtotal: null, tax: null, estimatedTotal: null});
+        //setBilling((previous) => [...previous, shipping])
         alert(`Order Submitted Successfully!`);
         setBilling({});
         setShipping({});
