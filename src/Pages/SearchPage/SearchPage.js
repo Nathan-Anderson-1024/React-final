@@ -3,6 +3,9 @@ import { useLocation } from 'react-router-dom'
 import Product from '../../Components/Product/Product';
 import { useCart } from '../../Context/CartContext'
 import './SearchPage.css'
+import SortProducts from '../../Components/SortProducts/SortProducts';
+
+
 export default function SearchPage() {
   const { search } = useLocation();
   const { products } = useCart();
@@ -32,7 +35,10 @@ export default function SearchPage() {
     <div>
         <h1>{`Results for "${queryParams.get('name')}"`}</h1>
         <h3>Products that matched your search:</h3>
-        <div className='search-products'>
+        <div className="filter-container">
+          <SortProducts products={products} />
+        </div>
+        <div className='product-container'>
             { searchResults && searchResults.map((product) => {
                 return (
                   <Product key={product.id} product={product}  />

@@ -78,7 +78,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 5. ~~Create Checkout page~~
 6. ~~filtering by category~~
 7. ~~filtering by search term~~
-8. order by price (high to low / low to high)
+8. ~~order by price (high to low / low to high)~~
 9. ~~Context API cleanup~~
 10. ~~general code cleanup~~
 11. ~~Limit the number of items a user can add.~~
@@ -100,6 +100,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 27. name the website
 28. ~~fix the active links on lower nav~~
 29. ~~fix the nav links to filter the correct page~~
-30. create a component to sort by price
+30. ~~create a component to sort by price~~
 31. Autofill billing address when clicked
 32. add local storage for cart
