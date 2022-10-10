@@ -19,7 +19,7 @@ export default function Search() {
 
   return (
     <form onSubmit={onSearchHandler} className='search-form'>
-        <input type='text' className='search' ref={searchInputRef}></input>
+        <input type='text' className='search' ref={searchInputRef} placeholder='Looking for something?'></input>
         <button type='submit' className='search-button'>🔎</button>
     </form>
   )

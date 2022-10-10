@@ -26,6 +26,15 @@ export default function CheckoutPage() {
     zipCode: '',
     sameBilling: false
   });
+  const [billing, setBilling] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zipCode: '',
+  })
   const timerRef = useRef(null);
   const navigate = useNavigate();
   
@@ -36,7 +45,10 @@ export default function CheckoutPage() {
         setShow(false);
         setCart([]);
         setSubtotal({subtotal: null, tax: null, estimatedTotal: null});
-        alert('Order Submitted Successfully!');
+        //setBilling((previous) => [...previous, shipping])
+        alert(`Order Submitted Successfully!`);
+        setBilling({});
+        setShipping({});
         navigate('/');
     }, 4000)
   }
@@ -52,8 +64,8 @@ export default function CheckoutPage() {
         <div className='checkout-form'>
             <form onSubmit={(event) => awaitModal(event)}>
                 <ContactInfo />
-                <ShippingInfo setShipping={setShipping} shipping={shipping} />
-                <BillingInfo shipping={shipping} />
+                <ShippingInfo setShipping={setShipping} />
+                <BillingInfo shipping={shipping} setShipping={setShipping} />
                 <PaymentInfo />
                 <div className='checkout-submit-btn'>
                     <button type='submit'>Submit Order!</button>

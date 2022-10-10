@@ -40,3 +40,14 @@ body {
 /* .navbar li:hover {
     background-color: #777;
 } */
+/* cart icon */
+.cart-icon {
+    position: relative;
+}
+.cart-number {
+    position: absolute;
+    top:50%;
+    left: 100%;
+    color: teal;
+    font-size: 1rem;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ShippingInfo({ shipping, setShipping}) {
+export default function ShippingInfo({ setShipping}) {
   //handle shipping inputs
   return (
     <div className="payment-info-wrapper">
