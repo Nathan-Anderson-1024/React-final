@@ -7,20 +7,12 @@ import { useCart } from "../../Context/CartContext";
 export default function ProductDetail() {
   //pulls id and gets index position of shop element
   const { id } = useParams();
-  //const location = useLocation();
-  //const { product } = location.state
-  //const indexLocation = Number(id) - 1;
-  //console.log(id)
-  //console.log(product)
   
   
   
   const { addQuantity, removeQuantity, quantity, products, addCartItem, handleUserQuantity } = useCart();
 
-  const findProduct = products.find(item => item.id === parseInt(id))
-  //const findProduct = product
-  //console.log(findProduct)
-  console.log(products)
+  const findProduct = products.find(item => item.id === parseInt(id));
   
 
   

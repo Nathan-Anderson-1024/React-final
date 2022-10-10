@@ -47,13 +47,15 @@ export function CartProvider({ children }) {
     const newCart = [...cart];
     const result = newCart.find((product) => product.id === itemId);
     if (result === undefined) {
+      const newProductArray = products;
+      const findInProducts = newProductArray.find((product) => product.id === itemId)
       const updatedValue = {
-        item: products[itemId - 1].title,
+        item: findInProducts.title,
         quantity: quantity,
-        img: products[itemId - 1].image,
-        price: products[itemId - 1].price,
-        totalCost: products[itemId - 1].price * quantity,
-        id: products[itemId - 1].id
+        img: findInProducts.image,
+        price: findInProducts.price,
+        totalCost: findInProducts.price * quantity,
+        id: findInProducts.id
       }
       setCart((prevState) => {
       return [...prevState, updatedValue]
