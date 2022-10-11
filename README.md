@@ -102,5 +102,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 29. ~~fix the nav links to filter the correct page~~
 30. ~~create a component to sort by price~~
 31. ~~Autofill billing address when clicked~~
-32. add local storage for cart
+32. ~~add local storage for cart~~
 33. think about how to store billing and shipping info when submitting
