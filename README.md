@@ -104,3 +104,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 31. ~~Autofill billing address when clicked~~
 32. ~~add local storage for cart~~
 33. ensure that if billing is same as shipping set billing to shipping info before submission, otherwise use billing info
+34. ESLINT rules SortProducts.js line 13:6
