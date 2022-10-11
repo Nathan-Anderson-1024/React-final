@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
+import useLocalStorage from "../Hooks/useLocalStorage";
 const CartContext = createContext({});
 
 export function useCart() {
@@ -7,7 +8,8 @@ export function useCart() {
 }
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  //const [cart, setCart] = useState([]);
+  const [cart, setCart] = useLocalStorage('cart', []);
   const [products, setProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState({subtotal: 0, tax: 0, estimatedTotal: 0})
@@ -71,7 +73,6 @@ export function CartProvider({ children }) {
       })
       setCart(newState)
     }
-    localStorage.setItem(`cart`, JSON.stringify(cart))
   }
   const handleUserQuantity = (event) => {
     if (Number(event.target.value < 1) || event.target.value.includes('-')) {
