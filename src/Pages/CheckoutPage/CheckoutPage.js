@@ -47,10 +47,9 @@ export default function CheckoutPage() {
         setSubtotal({subtotal: null, tax: null, estimatedTotal: null});
         //setBilling((previous) => [...previous, shipping])
         if (shipping.sameBilling) {
-            setBilling(shipping)
+            const newShipping = shipping
+            setBilling(newShipping)
         }
-        console.log(`Shipping: ${shipping.firstName}`)
-        console.log(`Billing: ${billing.firstName}`)
         alert(`Order Submitted Successfully!`);
         setBilling({});
         setShipping({});

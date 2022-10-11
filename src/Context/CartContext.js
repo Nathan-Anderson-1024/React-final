@@ -62,6 +62,7 @@ export function CartProvider({ children }) {
       setCart((prevState) => {
       return [...prevState, updatedValue]
       })
+      setQuantity(1)
     }
     //if item already in cart add selected number to the already existing number 
     else {
@@ -72,6 +73,7 @@ export function CartProvider({ children }) {
         return item;
       })
       setCart(newState)
+      setQuantity(1)
     }
   }
   const handleUserQuantity = (event) => {

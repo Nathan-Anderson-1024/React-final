@@ -3,13 +3,16 @@ import { useCart } from '../../Context/CartContext';
 
 export default function SortProducts({products}) {
   const { setProducts } = useCart();
+
   useEffect(() => {
+    console.log('in useEffect')
     const newProducts = products;
     const sorted = [...newProducts].sort((a, b) => {
       return a.id - b.id;
     })
     setProducts(sorted);
-
+    //adding setProducts or products to the dependency array causes infinite loop
+    // eslint-disable-next-line
   }, [])
 
   const sortLowHigh = () => {
