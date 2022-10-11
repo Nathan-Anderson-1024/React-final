@@ -97,10 +97,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 24. ~~Style Search Bar~~
 25. Investigate navigating to individual product page using && while it loads
 26. ~~fix background on main page~~
-27. name the website
+27. ~~name the website~~
 28. ~~fix the active links on lower nav~~
 29. ~~fix the nav links to filter the correct page~~
 30. ~~create a component to sort by price~~
 31. ~~Autofill billing address when clicked~~
 32. ~~add local storage for cart~~
-33. think about how to store billing and shipping info when submitting
+33. ensure that if billing is same as shipping set billing to shipping info before submission, otherwise use billing info

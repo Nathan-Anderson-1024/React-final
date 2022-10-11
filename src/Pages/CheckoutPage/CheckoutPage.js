@@ -46,6 +46,11 @@ export default function CheckoutPage() {
         setCart([]);
         setSubtotal({subtotal: null, tax: null, estimatedTotal: null});
         //setBilling((previous) => [...previous, shipping])
+        if (shipping.sameBilling) {
+            setBilling(shipping)
+        }
+        console.log(`Shipping: ${shipping.firstName}`)
+        console.log(`Billing: ${billing.firstName}`)
         alert(`Order Submitted Successfully!`);
         setBilling({});
         setShipping({});
@@ -65,7 +70,7 @@ export default function CheckoutPage() {
             <form onSubmit={(event) => awaitModal(event)}>
                 <ContactInfo />
                 <ShippingInfo setShipping={setShipping} />
-                <BillingInfo shipping={shipping} setShipping={setShipping} />
+                <BillingInfo shipping={shipping} setShipping={setShipping} setBilling={setBilling} billing={billing} />
                 <PaymentInfo />
                 <div className='checkout-submit-btn'>
                     <button type='submit'>Submit Order!</button>

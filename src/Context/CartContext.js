@@ -73,7 +73,6 @@ export function CartProvider({ children }) {
       })
       setCart(newState)
     }
-    //localStorage.setItem(`cart`, JSON.stringify(cart))
   }
   const handleUserQuantity = (event) => {
     if (Number(event.target.value < 1) || event.target.value.includes('-')) {

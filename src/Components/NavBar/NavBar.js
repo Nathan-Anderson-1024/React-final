@@ -9,7 +9,7 @@ export default function NavBar() {
   const newCart = cart;
   return (
     <nav className='navbar'>
-        <NavLink to='/' className='site-title'>Site</NavLink>
+        <NavLink to='/' className='site-title'>eCommerceHut</NavLink>
         <ul>
           <li className='search-nav'>
             <Search />
