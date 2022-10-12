@@ -4,7 +4,6 @@ export default function PaymentInfo() {
   return (
     <div className="payment-info-wrapper">
       <h1>Payment</h1>
-      {/* <form> */}
       <div>
         <div className="name-container">
           <div className="form-info">
@@ -37,8 +36,6 @@ export default function PaymentInfo() {
           </div>
         </div>
       </div>
-
-      {/* </form> */}
     </div>
   );
 }

@@ -37,9 +37,7 @@ body {
 .navbar li .active {
     background-color: rgba(229, 232, 235, 0.75);
 }
-/* .navbar li:hover {
-    background-color: #777;
-} */
+
 /* cart icon */
 .cart-icon {
     position: relative;
