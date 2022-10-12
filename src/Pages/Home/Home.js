@@ -13,7 +13,9 @@ export default function Home() {
       <div className="home-img-div">
         <Link to={`/products/mens`}>
           <img src={mens} alt="man in jeans"></img>
-          <div className="inner-text">Men's Clothing</div>
+          <div className="inner-text">
+            <div className="inner-text">Men's Clothing</div>
+          </div>
         </Link>
       </div>
       <div className="home-img-div">

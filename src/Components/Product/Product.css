@@ -63,3 +63,15 @@
     color: white;
     border-radius: 5px;
 }
+
+/* Media Query for small screens */
+@media only screen and (max-width: 600px) {
+    .product-container {
+        justify-content: center;
+    }
+    .item-link {
+        padding: 0;
+        margin: 1rem;
+        /* width: 50%; */
+    }
+}
