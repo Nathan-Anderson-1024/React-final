@@ -5,7 +5,6 @@ export default function SortProducts({products}) {
   const { setProducts } = useCart();
 
   useEffect(() => {
-    console.log('in useEffect')
     const newProducts = products;
     const sorted = [...newProducts].sort((a, b) => {
       return a.id - b.id;
