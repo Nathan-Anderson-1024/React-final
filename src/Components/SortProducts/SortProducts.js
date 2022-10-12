@@ -37,14 +37,28 @@ export default function SortProducts({products}) {
   });
     setProducts(sorted)
   }
+  const checkFilter = (event) => {
+    
+    if (event.target.value === 'default') {
+      return setDefault();
+    }
+    else if (event.target.value === 'low-high') {
+      return sortLowHigh();
+    }
+    else if (event.target.value === 'high-low') {
+      return sortHighLow();
+    } else {
+      return;
+    }
+  }
 
   return (
     <form>
         <label htmlFor='sort-by'>Sort By: </label>
-        <select id='sort-by' name='Default'>
-            <option value='default' onClick={setDefault}>Default</option>
-            <option value='low-high' onClick={sortLowHigh}>Price (Low to High)</option>
-            <option value='high-low' onClick={sortHighLow}>Price (High to Low)</option>
+        <select id='sort-by' name='Default' onClick={(event) => checkFilter(event)}>
+            <option value='default'>Default</option>
+            <option value='low-high'>Price (Low to High)</option>
+            <option value='high-low'>Price (High to Low)</option>
         </select>
     </form>
   )
