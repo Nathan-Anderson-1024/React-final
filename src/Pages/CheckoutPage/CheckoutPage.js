@@ -66,7 +66,7 @@ export default function CheckoutPage() {
   return (
     <div className='checkout-container'>
         <div className='checkout-form'>
-            <form onSubmit={(event) => awaitModal(event)}>
+            <form onSubmit={(event) => awaitModal(event)} className='complete-form'>
                 <ContactInfo />
                 <ShippingInfo setShipping={setShipping} />
                 <BillingInfo shipping={shipping} setShipping={setShipping} setBilling={setBilling} billing={billing} />
@@ -77,7 +77,7 @@ export default function CheckoutPage() {
             </form>
             <CheckoutModal show={show} onClose={() => setShow(false)} />
         </div>
-        <div>
+        <div className='order-summary-checkout'>
             <div className='checkout-right'>
                 <div className='checkout-subtotal'>
                     <h1>Order Summary</h1>

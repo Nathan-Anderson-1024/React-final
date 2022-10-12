@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ContactInfo.css'
 export default function ContactInfo() {
   return (
     <div className="payment-info-wrapper">

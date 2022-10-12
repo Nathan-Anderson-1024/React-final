@@ -51,3 +51,12 @@ body {
     color: teal;
     font-size: 1rem;
 }
+/* Media Query for small screens */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        width: 100%;
+    }
+    .search-nav {
+        display: none;
+    }
+}

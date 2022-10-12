@@ -4,7 +4,7 @@ export default function BillingInfo({shipping, setShipping, setBilling, billing}
   return (
     <div className="payment-info-wrapper">
       <h1>Billing</h1>
-      <div>
+      <div className="checkout-billing-form">
         <div className="name-container">
           <div className="form-info">
             <label htmlFor="f-name-billing">

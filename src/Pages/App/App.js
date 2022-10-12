@@ -24,7 +24,6 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            {/* <Route path='/products' element={<ProductList />} /> */}
             <Route path="/search" element={<SearchPage />} />
             <Route path="/products">
               <Route index element={<ProductList />} />
@@ -35,7 +34,6 @@ function App() {
               <Route path="electronics" element={<Tech />}></Route>
             </Route>
             <Route path="/cart" element={<Cart />} />
-            {/* <Route path='/products/:id' element={<ProductDetail />} /> */}
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
