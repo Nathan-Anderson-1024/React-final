@@ -1,3 +1,5 @@
 # Redirects from what the browser requests to what gets served
 
 /\* /index.html 200
+/products /products
+/cart /cart
