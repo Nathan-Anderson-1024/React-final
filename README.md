@@ -95,7 +95,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 22. ~~Add 404 page~~
 23. ~~Figure out what to do with home page~~
 24. ~~Style Search Bar~~
-25. Investigate navigating to individual product page using && while it loads
+25. ~~Investigate navigating to individual product page using && while it loads~~
 26. ~~fix background on main page~~
 27. ~~name the website~~
 28. ~~fix the active links on lower nav~~

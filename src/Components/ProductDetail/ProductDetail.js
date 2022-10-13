@@ -8,17 +8,12 @@ export default function ProductDetail() {
   //pulls id and gets index position of shop element
   const { id } = useParams();
   
-  
-  
   const { addQuantity, removeQuantity, quantity, products, addCartItem, handleUserQuantity } = useCart();
-
   const findProduct = products.find(item => item.id === parseInt(id));
-  
-
   
   return (
     <>
-      <div className="individual-product-container">
+      {findProduct !== undefined && <div className="individual-product-container">
         <div className="img-left">
           <img alt="product description" src={findProduct.image}></img>
         </div>
@@ -38,7 +33,8 @@ export default function ProductDetail() {
           <h3 className="description-title">Description:</h3>
           <h4 className="description">{findProduct.description}</h4>
         </div>
-      </div>
+      </div> }
+      {findProduct === undefined && <h1>Loading...</h1>}
     </>
   );
 }
