@@ -72,7 +72,7 @@ export default function CheckoutPage() {
                 <BillingInfo shipping={shipping} setShipping={setShipping} setBilling={setBilling} billing={billing} />
                 <PaymentInfo />
                 <div className='checkout-submit-btn'>
-                    <button type='submit'>Submit Order!</button>
+                    <button className='checkout-button' type='submit'>Submit Order!</button>
                 </div>
             </form>
             <CheckoutModal show={show} onClose={() => setShow(false)} />

@@ -59,7 +59,7 @@
     display: block;
 }
 .add-button:hover {
-    background-color: rgba(42, 42, 251, 0.998);
+    background-color: teal;
     color: white;
     border-radius: 5px;
 }

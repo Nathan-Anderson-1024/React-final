@@ -25,8 +25,8 @@ export default function ProductDetail() {
             <h3 className="quantity-title">Quantity:</h3>
             <input className="quantity-input" value={quantity} onChange={(event) => handleUserQuantity(event)}></input>
             <div className="buttons">
-              <button onClick={() => addQuantity()}>+</button>
-              <button onClick={() => removeQuantity()}>-</button>
+              <button className="increment" onClick={() => addQuantity()}>+</button>
+              <button className="decrement" onClick={() => removeQuantity()}>-</button>
             </div>
             <button className="add-cart" onClick={() => addCartItem(findProduct.id)}>Add to Cart</button>
           </div>

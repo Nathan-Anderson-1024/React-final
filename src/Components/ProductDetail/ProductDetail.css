@@ -56,6 +56,16 @@ body {
     cursor: pointer;
     padding: 1rem;
 }
+.add-cart:hover {
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+}
+.increment:hover, .decrement:hover {
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+}
 @media only screen and (min-width: 300px) and (max-width: 1700px) {
     .individual-product-container {
         flex-direction: column;

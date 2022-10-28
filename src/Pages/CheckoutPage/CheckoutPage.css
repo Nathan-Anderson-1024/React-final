@@ -42,6 +42,10 @@
     border-bottom: 2px solid #C4BFC1;
     width: 25vw;
 }
+.checkout-button:hover {
+    background-color: teal;
+    color: white;
+}
 /* ContactInfo.js */
 .form-info {
     display: flex;
