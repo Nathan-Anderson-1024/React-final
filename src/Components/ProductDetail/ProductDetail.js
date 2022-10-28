@@ -3,7 +3,6 @@ import './ProductDetail.css'
 import { useCart } from "../../Context/CartContext";
 import { useRef } from "react";
 
-
 //each individual product
 export default function ProductDetail() {
   //pulls id and gets index position of shop element
@@ -29,7 +28,7 @@ export default function ProductDetail() {
               <button className="increment" onClick={() => addQuantity()}>+</button>
               <button className="decrement" onClick={() => removeQuantity()}>-</button>
             </div>
-            {quantityRef.current.value >= 1 && <button className="add-cart" onClick={() => addCartItem(findProduct.id)}>Add to Cart</button>}
+            {Number(quantityRef.current.value) !== 0 && <button className="add-cart" onClick={() => addCartItem(findProduct.id)}>Add to Cart</button>}
           </div>
           <h3 className="description-title">Description:</h3>
           <h4 className="description">{findProduct.description}</h4>
