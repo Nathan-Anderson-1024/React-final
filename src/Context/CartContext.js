@@ -76,7 +76,7 @@ export function CartProvider({ children }) {
     }
   }
   const handleUserQuantity = (event) => {
-    if (Number(event.target.value < 1) || event.target.value.includes('-')) {
+    if (event.target.value.includes('-')) {
       setQuantity(1)
     } 
     else if (Number(event.target.value > 100)) {
