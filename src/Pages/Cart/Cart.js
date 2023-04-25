@@ -23,7 +23,7 @@ export default function Cart() {
     const newCart = [...cart];
     const newState = newCart.map(item => {
       if (item.id === itemId) {
-        return {...item, quantity: event.target.value, totalCost: event.target.value * item.price}
+        return {...item, quantity: parseInt(event.target.value), totalCost: event.target.value * item.price}
       }
       return item;
     })

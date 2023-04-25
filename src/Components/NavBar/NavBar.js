@@ -17,7 +17,7 @@ export default function NavBar() {
           <li>
             <NavLink to='/cart'>
               <i className="fa-solid fa-cart-shopping cart-icon">
-                {cart.length > 0 && <div className='cart-number'>{newCart.reduce(function(acc, obj) {return acc + obj.quantity}, 0)}</div>}
+                {cart.length > 0 && <div className='cart-number'>{newCart.reduce((acc, obj) => acc + obj.quantity, 0)}</div>}
               </i>
             </NavLink>
           </li>
