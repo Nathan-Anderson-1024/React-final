@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project can be viewed live [HERE](https://magenta-strudel-1d5f9d.netlify.app/).
 
 ## Available Scripts
 
